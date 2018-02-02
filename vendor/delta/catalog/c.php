@@ -17,9 +17,10 @@
  */
 class catalog_c {
 
-	//use catalog_cRender;
+	use catalog_cRender;
 
 
+	protected $rootCatalog = 3;
 	protected static $_VIEW_P_DIR_OPT;
 	protected static $_VIEW_P_ALL_FIELD;
 	protected static $_TABLE_P_IMAGES;
@@ -132,20 +133,20 @@ class catalog_c {
 		if (!is_array($this->catsIDS)) return false;
 		$ids=false;
 		foreach ($this->catsIDS as $key => $value) {
-			$result = $this->db->query("SELECT pagetitle, parent, alias, id, isfolder, content, menuindex  
-				FROM  ".self::$_TABLE_SC." WHERE id =  ".$value.$limiter); 
+			$result = $this->modx->db->query("SELECT pagetitle, parent, alias, id, isfolder, content, menuindex  
+				FROM  ".$this->modx::$_TABLE_SC." WHERE id =  ".$value.$limiter); 
 
-			if( $this->db->getRecordCount( $result ) >= 1 ) {
-				while( $row = $this->db->getRow( $result ) ) { 
+			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
+				while( $row = $this->modx->db->getRow( $result ) ) { 
 					$ids[$value]['fields'] = $row;  
 				}
 			}
 
-			$result = $this->db->query("SELECT v.value, n.name FROM  ".self::$_TABLE_TV." AS v 
-										INNER JOIN ".self::$_TABLE_TVNAMES." AS n ON n.id = v.tmplvarid
+			$result = $this->modx->db->query("SELECT v.value, n.name FROM  ".$this->modx::$_TABLE_TV." AS v 
+										INNER JOIN ".$this->modx::$_TABLE_TVNAMES." AS n ON n.id = v.tmplvarid
 										WHERE v.contentid =  ".$value); 
-			if( $this->db->getRecordCount( $result ) >= 1 ) {
-				while( $row = $this->db->getRow( $result ) ) {  
+			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
+				while( $row = $this->modx->db->getRow( $result ) ) {  
 					$ids[$value]['tv'][$row['name']] = $row['value'];  
 				}
 			}
@@ -365,10 +366,10 @@ class catalog_c {
 		}else {
 			$sql = "SELECT * FROM ".self::$_VIEW_P_DIR_OPT." `pd`
 				WHERE ".($showInnerCats ? $dopSqlPrnt :  " pd.id_sc=" . $id )." AND pd.visible > 0 GROUP BY pd.id_product ".$limiter; 
-			$result = $this->db->query($sql);
-			if( $this->db->getRecordCount( $result ) >= 1 ) {
+			$result = $this->modx->db->query($sql);
+			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
 				//$k = 0;
-				while( $row = $this->db->getRow( $result ) ){  
+				while( $row = $this->modx->db->getRow( $result ) ){  
 					//$ids[$k++]['id'] = $row['id_product'];
 					$ids[] = $row['id_product'];
 				}
@@ -395,11 +396,11 @@ class catalog_c {
 		if (!is_array($this->goodsIDS)) return false;
 		$ids=false;
 		foreach ($this->goodsIDS as $key => $value) {
-			$result = $this->db->query("SELECT *
+			$result = $this->modx->db->query("SELECT *
 				FROM  ".self::$_VIEW_P_ALL_FIELD." WHERE id_product =  ".$value." 
-				AND id_language = ".self::$_LANGUAGE_ID); 
-			if( $this->db->getRecordCount( $result ) >= 1 ) {
-				while( $row = $this->db->getRow( $result ) ) { 
+				AND id_language = ".$this->modx::$_LANGUAGE_ID); 
+			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
+				while( $row = $this->modx->db->getRow( $result ) ) { 
 					$ids[$value]['fields'] = $row;  
 				}
 			}

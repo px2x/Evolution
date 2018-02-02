@@ -7,12 +7,12 @@
  * 
  */
 class dDocumentParser extends DocumentParser {
-	use user_u; 
-	use user_uOrders;
+	//use user_u; 
+	//use user_uOrders;
 	//use catalog_c;
 	
-	protected $rootCatalog = 3;
-	protected static $_LANGUAGE_ID = 1;
+	
+	public static $_LANGUAGE_ID = 1;
 	public $urlXParams = false;
 	public static $_TABLE_SC;
 	public static $_TABLE_TV;
@@ -26,11 +26,9 @@ class dDocumentParser extends DocumentParser {
 
 	public function __construct() {
 		parent::__construct();
-
 		self::$_TABLE_SC = $this->getFullTableName('site_content');
 		self::$_TABLE_TV = $this->getFullTableName('site_tmplvar_contentvalues');
 		self::$_TABLE_TVNAMES = $this->getFullTableName('site_tmplvars');
-
 		$this->c = new catalog_c($this);
 	}
 
@@ -85,6 +83,7 @@ class dDocumentParser extends DocumentParser {
 
 
 
+
 	public function sendStrictURI(){
 		if(is_array($this->urlXParams) && count($this->urlXParams)){
 			return; //scorn
@@ -93,6 +92,7 @@ class dDocumentParser extends DocumentParser {
 		}
 	}
 	
+
 
 
 
