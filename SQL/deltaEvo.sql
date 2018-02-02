@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 05 2018 г., 19:03
+-- Время создания: Фев 02 2018 г., 18:59
 -- Версия сервера: 5.5.50-log
 -- Версия PHP: 7.0.8
 
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `delta_active_users` (
 --
 
 INSERT INTO `delta_active_users` (`sid`, `internalKey`, `username`, `lasthit`, `action`, `id`) VALUES
-('5pnv2e0pjis7ek63fl28lg2ce3', 1, 'admin', 1513257383, '76', NULL),
-('2fvhk6eel8ueheppooidluvom3', 1, 'admin', 1515167871, '22', 10);
+('g0vtdsgv10ri0gjrts31e122k3', 1, 'admin', 1517585532, '102', 12),
+('2fvhk6eel8ueheppooidluvom3', 1, 'admin', 1515493930, '67', 10);
 
 -- --------------------------------------------------------
 
@@ -56,16 +56,14 @@ CREATE TABLE IF NOT EXISTS `delta_active_user_locks` (
   `elementType` int(1) NOT NULL DEFAULT '0',
   `elementId` int(10) NOT NULL DEFAULT '0',
   `lasthit` int(20) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=144 DEFAULT CHARSET=utf8 COMMENT='Contains data about locked elements.';
+) ENGINE=MyISAM AUTO_INCREMENT=163 DEFAULT CHARSET=utf8 COMMENT='Contains data about locked elements.';
 
 --
 -- Дамп данных таблицы `delta_active_user_locks`
 --
 
 INSERT INTO `delta_active_user_locks` (`id`, `sid`, `internalKey`, `elementType`, `elementId`, `lasthit`) VALUES
-(138, '2fvhk6eel8ueheppooidluvom3', 1, 5, 11, 1515167228),
-(141, '2fvhk6eel8ueheppooidluvom3', 1, 3, 9, 1515167792),
-(143, '2fvhk6eel8ueheppooidluvom3', 1, 4, 10, 1515167871);
+(162, 'g0vtdsgv10ri0gjrts31e122k3', 1, 5, 12, 1517585532);
 
 -- --------------------------------------------------------
 
@@ -85,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `delta_active_user_sessions` (
 --
 
 INSERT INTO `delta_active_user_sessions` (`sid`, `internalKey`, `lasthit`, `ip`) VALUES
-('2fvhk6eel8ueheppooidluvom3', 1, 1515168049, '127.0.0.1');
+('g0vtdsgv10ri0gjrts31e122k3', 1, 1517586895, '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -181,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `delta_manager_log` (
   `itemid` varchar(10) DEFAULT '0',
   `itemname` varchar(255) DEFAULT NULL,
   `message` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=130 DEFAULT CHARSET=utf8 COMMENT='Contains a record of user interaction.';
+) ENGINE=MyISAM AUTO_INCREMENT=168 DEFAULT CHARSET=utf8 COMMENT='Contains a record of user interaction.';
 
 --
 -- Дамп данных таблицы `delta_manager_log`
@@ -316,7 +314,45 @@ INSERT INTO `delta_manager_log` (`id`, `timestamp`, `internalKey`, `username`, `
 (126, 1515167822, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
 (127, 1515167822, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
 (128, 1515167871, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
-(129, 1515167871, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet');
+(129, 1515167871, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(130, 1515487867, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(131, 1515487895, 1, 'admin', 16, '4', 'Каталог', 'Editing template'),
+(132, 1515488327, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(133, 1515489311, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(134, 1515489311, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(135, 1515489591, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(136, 1515489591, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(137, 1515489883, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(138, 1515489883, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(139, 1515489922, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(140, 1515489922, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(141, 1515489960, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(142, 1515489960, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(143, 1515490876, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(144, 1515490876, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(145, 1515490971, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(146, 1515490971, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(147, 1515491009, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(148, 1515491009, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(149, 1515491018, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(150, 1515491018, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(151, 1515491637, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(152, 1515491637, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(153, 1515491661, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(154, 1515491661, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(155, 1515491710, 1, 'admin', 24, '10', 'DLT_CATALOG', 'Saving Snippet'),
+(156, 1515491710, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(157, 1517584488, 1, 'admin', 58, '-', 'MODX', 'Logged in'),
+(158, 1517584501, 1, 'admin', 22, '10', 'DLT_CATALOG', 'Editing Snippet'),
+(159, 1517584955, 1, 'admin', 101, '-', 'Новый плагин', 'Create new plugin'),
+(160, 1517585165, 1, 'admin', 103, '-', 'syncSnippets', 'Saving plugin'),
+(161, 1517585166, 1, 'admin', 76, '-', '-', 'Element management'),
+(162, 1517585168, 1, 'admin', 102, '12', 'syncSnippets', 'Edit plugin'),
+(163, 1517585499, 1, 'admin', 103, '12', 'syncSnippets', 'Saving plugin'),
+(164, 1517585499, 1, 'admin', 76, '-', '-', 'Element management'),
+(165, 1517585516, 1, 'admin', 102, '12', 'syncSnippets', 'Edit plugin'),
+(166, 1517585532, 1, 'admin', 103, '12', 'syncSnippets', 'Saving plugin'),
+(167, 1517585532, 1, 'admin', 102, '12', 'syncSnippets', 'Edit plugin');
 
 -- --------------------------------------------------------
 
@@ -553,7 +589,7 @@ CREATE TABLE IF NOT EXISTS `delta_site_plugins` (
   `moduleguid` varchar(32) NOT NULL DEFAULT '' COMMENT 'GUID of module from which to import shared parameters',
   `createdon` int(11) NOT NULL DEFAULT '0',
   `editedon` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='Contains the site plugins.';
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='Contains the site plugins.';
 
 --
 -- Дамп данных таблицы `delta_site_plugins`
@@ -570,7 +606,8 @@ INSERT INTO `delta_site_plugins` (`id`, `name`, `description`, `editor_type`, `c
 (8, 'TransAlias', '<strong>1.0.4</strong> Human readible URL translation supporting multiple languages and overrides', 0, 2, 0, 'require MODX_BASE_PATH.''assets/plugins/transalias/plugin.transalias.php'';', 0, '{"table_name":[{"label":"Trans table","type":"list","value":"russian","options":"common,russian,dutch,german,czech,utf8,utf8lowercase","default":"russian","desc":""}],"char_restrict":[{"label":"Restrict alias to","type":"list","value":"lowercase alphanumeric","options":"lowercase alphanumeric,alphanumeric,legal characters","default":"lowercase alphanumeric","desc":""}],"remove_periods":[{"label":"Remove Periods","type":"list","value":"No","options":"Yes,No","default":"No","desc":""}],"word_separator":[{"label":"Word Separator","type":"list","value":"dash","options":"dash,underscore,none","default":"dash","desc":""}],"override_tv":[{"label":"Override TV name","type":"string","value":"","default":"","desc":""}]}', 0, '', 0, 0),
 (9, 'Updater', '<strong>0.8.2</strong> show message about outdated CMS version', 0, 2, 0, 'require MODX_BASE_PATH.''assets/plugins/updater/plugin.updater.php'';\r\n\r\n\r\n', 0, '{"version":[{"label":"Version:","type":"text","value":"evolution-cms\\/evolution","default":"evolution-cms\\/evolution","desc":""}],"wdgVisibility":[{"label":"Show widget for:","type":"menu","value":"All","options":"All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly","default":"All","desc":""}],"ThisRole":[{"label":"Show only to this role id:","type":"string","value":"","default":"","desc":""}],"ThisUser":[{"label":"Show only to this username:","type":"string","value":"","default":"","desc":""}],"showButton":[{"label":"Show Update Button:","type":"menu","value":"AdminOnly","options":"show,hide,AdminOnly","default":"AdminOnly","desc":""}],"type":[{"label":"Type:","type":"menu","value":"tags","options":"tags,releases,commits","default":"tags","desc":""}]}', 0, '', 0, 0),
 (10, 'userHelper', '<strong>1.7.11</strong> addition to FormLister', 0, 3, 0, '\n/**\n * userHelper\n * \n * addition to FormLister\n * \n * @category    plugin\n * @version     1.7.11\n * @internal    @properties &logoutKey=Request key;text;logout &cookieName=Cookie Name;text;WebLoginPE &cookieLifetime=Cookie Lifetime, seconds;text;157680000 &maxFails=Max failed logins;text;3 &blockTime=Block for, seconds;text;3600\n * @internal    @events OnWebPageInit,OnPageNotFound,OnWebLogin\n * @internal    @modx_category Content\n * @internal    @disabled 1\n**/\n\nrequire MODX_BASE_PATH.''assets/snippets/FormLister/plugin.userHelper.php'';', 0, '{"logoutKey":[{"label":"Request key","type":"text","value":"logout","default":"logout","desc":""}],"cookieName":[{"label":"Cookie Name","type":"text","value":"WebLoginPE","default":"WebLoginPE","desc":""}],"cookieLifetime":[{"label":"Cookie Lifetime, seconds","type":"text","value":"157680000","default":"157680000","desc":""}],"maxFails":[{"label":"Max failed logins","type":"text","value":"3","default":"3","desc":""}],"blockTime":[{"label":"Block for, seconds","type":"text","value":"3600","default":"3600","desc":""}]}', 1, '', 0, 0),
-(11, 'test', '', 0, 0, 0, '//echo $modx->pre($modx->getTreeCat(4));\r\n\r\n//echo $modx->pre($modx->getCatFromID(3));\r\n\r\n$id= $modx->documentIdentifier;\r\n\r\n//$ids = $modx->getTreeCat(4 , false);\r\n	\r\n$modx->getTreeCat(3);\r\n\r\n//$modx->getCatFromID(4)->getFields()->sortIt(''cats'', ''menuindex'', ''DESC'')->sliceIt(''cats'' , 1, 2);\r\n\r\n\r\n$idsF = $modx->getArrayData(''cats'');\r\n\r\n\r\n//$idsF = $modx->getFields();\r\n\r\n\r\n//$modx->sortGoods (''menuindex'', ''ASC'');\r\n\r\n//$idsF = $modx->sliceGoods ($idsF , 0, 99);\r\n\r\n//echo $modx->pre($idsF);\r\n\r\n\r\n\r\n$modx->getGoodsFromCats (4 ,false, /*$modx->parseXparams()*/ false , true );\r\n\r\n//$modx->getAllGoodFields();\r\n\r\n\r\n//$idsGoods = $modx->getGoodsFromCats ();\r\n\r\n$modx->getAllGoodFields();\r\n	\r\n\r\necho $modx->pre($modx->getArrayData(''goods''));\r\n\r\necho $modx->pre($modx->urlXParams);\r\n\r\n', 0, '{}', 1, ' ', 1515077424, 1515163243);
+(11, 'test', '', 0, 0, 0, '//echo $modx->pre($modx->getTreeCat(4));\r\n\r\n//echo $modx->pre($modx->getCatFromID(3));\r\n\r\n$id= $modx->documentIdentifier;\r\n\r\n//$ids = $modx->getTreeCat(4 , false);\r\n	\r\n$modx->getTreeCat(3);\r\n\r\n//$modx->getCatFromID(4)->getFields()->sortIt(''cats'', ''menuindex'', ''DESC'')->sliceIt(''cats'' , 1, 2);\r\n\r\n\r\n$idsF = $modx->getArrayData(''cats'');\r\n\r\n\r\n//$idsF = $modx->getFields();\r\n\r\n\r\n//$modx->sortGoods (''menuindex'', ''ASC'');\r\n\r\n//$idsF = $modx->sliceGoods ($idsF , 0, 99);\r\n\r\n//echo $modx->pre($idsF);\r\n\r\n\r\n\r\n$modx->getGoodsFromCats (4 ,false, /*$modx->parseXparams()*/ false , true );\r\n\r\n//$modx->getAllGoodFields();\r\n\r\n\r\n//$idsGoods = $modx->getGoodsFromCats ();\r\n\r\n$modx->getAllGoodFields();\r\n	\r\n\r\necho $modx->pre($modx->getArrayData(''goods''));\r\n\r\necho $modx->pre($modx->urlXParams);\r\n\r\n', 0, '{}', 1, ' ', 1515077424, 1515163243),
+(12, 'syncSnippets', '<b>2.0</b> Cинхронизация сниппетов. Использовать ТОЛЬКО при разработке', 0, 0, 0, '/**\r\n * syncSnippets\r\n *\r\n * Cинхронизация сниппетов. Использовать ТОЛЬКО при разработке\r\n *\r\n * @version   2.0\r\n * @date      02.02.2018\r\n * @events    OnWebPageInit,OnSnipFormSave\r\n *\r\n */\r\n\r\n$conf = array (\r\n		''path'' => "assets/sync_snippets/"\r\n);\r\n\r\n$catList = [];\r\n\r\n\r\n\r\nswitch ($modx->event->name) {\r\n    case ''OnWebPageInit'':\r\n        init_px_sync($modx, $conf, $catList);\r\n        break;\r\n    case ''OnSnipFormSave'':\r\n        refreshSNPfile($modx , $conf);\r\n        break;	\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\nfunction refreshSNPfile($modx , $conf){\r\n	$snippetID = $modx->event->params[''id''];\r\n	$sql = "SELECT ss.snippet, ss.name , cat.category FROM ".$modx->getFullTableName( ''site_snippets'' )." AS ss \r\n			LEFT JOIN  ".$modx->getFullTableName( ''categories'' )." AS cat ON cat.id = ss.category\r\n			WHERE ss.id = ".$snippetID;\r\n	\r\n	$result = $modx->db->query($sql);\r\n	if ($result && $modx->db->getRecordCount($result) > 0) {\r\n		if ($row = $modx->db->getRow($result)){\r\n		\r\n			if ($row[''category''] == '''') {\r\n				$snp_path = $conf[''path''].$row[''name''].''.php'';\r\n			} else {\r\n				$snp_path = $conf[''path''].$row[''category''].''/''.$row[''name''].''.php'';\r\n			}\r\n			\r\n			$fileHandler = fopen (''../''.$snp_path , ''w'');\r\n				\r\n			if ($fileHandler) {\r\n				fwrite($fileHandler , "<?php".PHP_EOL.$row[''snippet''].PHP_EOL."?>");\r\n				fclose($fileHandler);\r\n				@unlink(''../''.$conf[''path''].''___SyncDATE.log'');\r\n				rewriteLog(''../''.$conf[''path''] , $conf , true);\r\n				\r\n			}	\r\n		}\r\n	}\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfunction init_px_sync ($modx , $conf , &$catList) {\r\n	$sql = "SELECT * FROM ".$modx->getFullTableName( ''categories'' )." LIMIT 50";\r\n	$result = $modx->db->query($sql);\r\n	if ($result && $modx->db->getRecordCount($result) > 0 ) {\r\n		while ($row = $modx->db->getRow($result)){\r\n			$catList[$row[''id''] ] = $row[''category'']; \r\n		}\r\n	}\r\n	\r\n	$newDirectories = addNewCatToDB($modx , $conf , $catList);\r\n	if ($newDirectories) {\r\n		createNewSnippet($modx , $conf[''path''] , $conf);\r\n	}\r\n	\r\n	if (makeDir($catList , $conf)) {\r\n		if (sync($modx , $conf , $catList) === true){\r\n			@unlink($conf[''path''].''___SyncDATE.log'');\r\n			if (rewriteLog($conf[''path''] , $conf , false) === true) {\r\n				header("Location: http://".$_SERVER[''HTTP_HOST''].$_SERVER[''REQUEST_URI'']);\r\n			}	\r\n		}\r\n	}\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfunction createNewSnippet($modx , $path, $conf) {\r\n	$dirHandler = opendir($path);\r\n	while (($file = readdir($dirHandler)) !== false) {\r\n        if ($file == ''.'' || $file == ''..'' || $file == "___SyncDATE.log") continue;\r\n		\r\n		if (is_dir($path.$file)) {\r\n			//recurssive\r\n			createNewSnippet($modx , $path.$file."/", $conf);\r\n		}elseif (is_file($path.$file)) {\r\n			\r\n			if (!file_exists($path.$file)) return false;\r\n			$fileName = explode(''.'', $file);\r\n			$fileName = $fileName[0];\r\n			$idCategory = 0;\r\n\r\n			$sql = "SELECT id FROM  ".$modx->getFullTableName( ''site_snippets'' )." WHERE name = ''".$fileName."'' ";\r\n			if ($result = $modx->db->query($sql)){\r\n				if ($modx->db->getRecordCount($result) == 0) {\r\n					$pathWay = explode(''/'' , $path);\r\n					print_r($pathWay);\r\n					if (count($pathWay) > 0){\r\n						\r\n						$rootPath = explode(''/'', $conf[''path'']);\r\n						$rootPath = $rootPath[count($rootPath)-2];\r\n						if ($pathWay[count($pathWay)-2] == $rootPath) {\r\n							$idCategory = 0;\r\n						} else {\r\n\r\n							$catName = $pathWay[count($pathWay)-2];\r\n							echo ''__''.$catName.''<br>'';\r\n							\r\n							$sql = "SELECT id FROM ".$modx->getFullTableName( ''categories'' )." WHERE category = ''".$catName."'' LIMIT 1";\r\n							if ($result = $modx->db->query($sql)) {\r\n								if ($modx->db->getRecordCount($result) > 0){\r\n									if ($row = $modx->db->getRow($result)) {\r\n										$idCategory = $row[''id''];\r\n									}\r\n								}\r\n							}\r\n						}\r\n\r\n						$snp_code =  file($path.$file);\r\n						$snp_code[0] = '''';\r\n						$snp_code[count($snp_code) -1 ] = '''';\r\n						$snp_code = implode("", $snp_code);\r\n						$snp_code = $modx->db->escape($snp_code);\r\n						$sql = "INSERT INTO ".$modx->getFullTableName( ''site_snippets'' )." (name , category , snippet) VALUES (''".$fileName."'' , ''".$idCategory."'' , ''".$snp_code."'') ";\r\n						$result = $modx->db->query($sql);\r\n						if ($result) {\r\n							//rewriteLog($conf[''path''] , $conf);\r\n						}\r\n					}\r\n				}\r\n			}\r\n		}	\r\n	}\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfunction addNewCatToDB($modx , $conf, &$catList) {\r\n	if (file_exists($conf[''path''])) {\r\n		$dirHandler = opendir($conf[''path'']);\r\n	}else {\r\n		return false;\r\n	}\r\n	$err = false;\r\n	$fs_dirs = [];\r\n	\r\n	while (($file = readdir($dirHandler)) !== false) {\r\n        if ($file == ''.'' || $file == ''..'' ) continue;\r\n		if (is_dir($conf[''path''].$file)) {\r\n			$fs_dirs[] = $file;\r\n		}\r\n	}\r\n	\r\n	if (count($fs_dirs) > 0) {\r\n		$newDirs = array_diff($fs_dirs , $catList);\r\n	}\r\n\r\n	if (count($newDirs) > 0) {\r\n		foreach($newDirs AS $val) {\r\n			$sql = "INSERT INTO ".$modx->getFullTableName( ''categories'' )." (id, category) VALUES (NULL , ''".$val."'')";\r\n			$result = $modx->db->query($sql);\r\n			if ($result) {\r\n				$sql_last = "SELECT id FROM ".$modx->getFullTableName( ''categories'' )." WHERE category = ''".$val."'' ";\r\n				$result_last = $modx->db->query($sql_last);\r\n				if ($result_last) {\r\n					if ($lastId = $modx->db->getRow($result_last)) {\r\n						$catList[$lastId[''id''] ] = $val;\r\n					}\r\n				}\r\n			}else {\r\n				$err = true;\r\n			}\r\n		}\r\n	}\r\n\r\n	if ($err) {\r\n		return false;\r\n	} else {\r\n		if (count($newDirs) > 0) {\r\n			return $newDirs;\r\n		} else {\r\n			return true;\r\n		}\r\n	}\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfunction makeDir ($catList , $conf) {\r\n	$err = false;\r\n	if (count($catList) > 0) {\r\n		if (!file_exists($conf[''path''])) {\r\n			if (!mkdir ($conf[''path''])) {\r\n				$err = true;\r\n			}\r\n		} \r\n		foreach ($catList AS $key => $value){\r\n			if (!file_exists($conf[''path''].$value)) {\r\n				if (!mkdir ($conf[''path''].$value, 0777, true)){\r\n					$err = true;\r\n					break;\r\n				}\r\n			}	\r\n		}\r\n	} else {	\r\n		$err = true;\r\n	}\r\n	if ($err) {\r\n		return false;\r\n	} else {\r\n		return true;\r\n	}\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfunction sync ($modx , $conf , $catList) {\r\n\r\n	if (count($catList) < 1) return false;\r\n	$sql = "SELECT * FROM ".$modx->getFullTableName( ''site_snippets'' )." LIMIT 500";\r\n	$result = $modx->db->query($sql);\r\n	if ($result && $modx->db->getRecordCount($result) > 0 ) {\r\n		$dateSyncFileHandler = fopen ($conf[''path''].''___SyncDATE.log'' , ''a+'');\r\n		$logDataArr = [];\r\n		$logData = @fread($dateSyncFileHandler, filesize($conf[''path''].''___SyncDATE.log''));	\r\n		$logData = explode(PHP_EOL,$logData);\r\n		\r\n		if (count($logData) > 0){\r\n			foreach ($logData AS $tmp){\r\n				$tmp = explode("::" , $tmp);\r\n				$logDataArr[ $tmp[0] ] = $tmp[1];\r\n			}\r\n		}\r\n		$refreshProcess = false;\r\n		while ($row = $modx->db->getRow($result)){\r\n			$snp_path = $conf[''path''].$catList[ $row[''category''] ].''/''.$row[''name''].''.php'';\r\n			if (file_exists($snp_path)){\r\n				if (filemtime($snp_path) > $logDataArr[$row[''name''].''.php'' ]) {	\r\n					if (refreshDBsnippet($modx , $snp_path, $row[''name''], $catList) === true){\r\n						$refreshProcess = true;\r\n					}\r\n				}	\r\n			} else {\r\n				$fileHandler = fopen ($snp_path , ''a+'');\r\n				if ($fileHandler) {\r\n					fwrite($fileHandler , "<?php".PHP_EOL.$row[''snippet''].PHP_EOL."?>");\r\n					fclose($fileHandler);\r\n				}\r\n				fwrite($dateSyncFileHandler , $row[''name''].''::''.filemtime($snp_path).PHP_EOL);\r\n			}\r\n		}\r\n		fclose($dateSyncFileHandler);\r\n	}\r\n	if ($refreshProcess) {\r\n		return true;\r\n	} else return false;\r\n}\r\n\r\n\r\n\r\n\r\n\r\nfunction refreshDBsnippet($modx , $snp_path, $snp_name,  $catList) {\r\n	$snp_code =  file($snp_path);\r\n	$snp_code[0] = '''';\r\n	$snp_code[count($snp_code) -1 ] = '''';\r\n	$snp_code = implode("", $snp_code);\r\n	$snp_code = $modx->db->escape($snp_code);\r\n	\r\n	$sql = "UPDATE ".$modx->getFullTableName( ''site_snippets'' )." SET snippet = ''".$snp_code."'' WHERE name = ''".$snp_name."'' LIMIT 1";\r\n	$result = $modx->db->query($sql) or die ("ERR 564 ".$modx->db->getLastError());\r\n	\r\n	if ($result){\r\n		clearCache_px($modx);\r\n		return true;\r\n	} else {\r\n		return false;\r\n	}\r\n}\r\n\r\n\r\n\r\n\r\n\r\nfunction clearCache_px($modx) {\r\n	$modx->clearCache();\r\n	include_once MODX_BASE_PATH . ''manager/processors/cache_sync.class.processor.php'';\r\n	$sync= new synccache();\r\n	$sync->setCachepath( MODX_BASE_PATH . "assets/cache/" );\r\n	$sync->setReport( false );\r\n	$sync->emptyCache();\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfunction rewriteLog($path , $conf , $outMNG) {\r\n\r\n	if ($outMNG) {\r\n		$upPath = ''../'';\r\n	}else {\r\n		$upPath = '''';\r\n	}\r\n	\r\n	$dirHandler = opendir($path);\r\n	while (($file = readdir($dirHandler)) !== false) {\r\n        if ($file == ''.'' || $file == ''..'' ) continue;\r\n		if (is_dir($path.$file)) {\r\n			rewriteLog($path.$file.''/'', $conf , $outMNG);\r\n		}else {\r\n			$fp = fopen($upPath.$conf[''path''].''___SyncDATE.log'' , ''a'');\r\n			fwrite($fp , $file.''::''.filemtime($path.$file).PHP_EOL);\r\n			fclose($fp);\r\n		}\r\n    }\r\n	return true;\r\n}\r\n', 0, '{}', 0, ' ', 1517585165, 1517585532);
 
 -- --------------------------------------------------------
 
@@ -646,7 +683,9 @@ INSERT INTO `delta_site_plugin_events` (`pluginid`, `evtid`, `priority`) VALUES
 (10, 4, 0),
 (10, 90, 0),
 (10, 1000, 0),
-(11, 3, 1);
+(11, 3, 1),
+(12, 90, 1),
+(12, 43, 1);
 
 -- --------------------------------------------------------
 
@@ -684,7 +723,7 @@ INSERT INTO `delta_site_snippets` (`id`, `name`, `description`, `editor_type`, `
 (7, 'if', '<strong>1.3</strong> A simple conditional snippet. Allows for eq/neq/lt/gt/etc logic within templates, resources, chunks, etc.', 0, 4, 0, 'return require MODX_BASE_PATH.''assets/snippets/if/snippet.if.php'';', 0, '', '', 0, 0, 0),
 (8, 'phpthumb', '<strong>1.3</strong> PHPThumb creates thumbnails and altered images on the fly and caches them', 0, 3, 0, 'return require MODX_BASE_PATH.''assets/snippets/phpthumb/snippet.phpthumb.php'';\r\n', 0, '', '', 0, 0, 0),
 (9, 'summary', '<strong>2.0.2</strong> Truncates the string to the specified length', 0, 3, 0, 'return require MODX_BASE_PATH.''assets/snippets/summary/snippet.summary.php'';', 0, '', '', 0, 0, 0),
-(10, 'DLT_CATALOG', '', 0, 0, 0, '\r\nif (!is_numeric($root)){\r\n	$root= $modx->documentIdentifier;\r\n}\r\n\r\n//$modx->getCatFromID($root)->getFields()->sortIt(''cats'', ''menuindex'', ''DESC'')->sliceIt(''cats'' , 0, 2);\r\n\r\n$modx->getCatFromID($root)->getFields()->sortIt(''cats'', ''menuindex'', ''DESC'');\r\n\r\n//$modx->renderAll($chunkCats , ''cats'' , ''print'');\r\n\r\n\r\n$modx->getGoodsFromCats ($root ,false, /*$modx->parseXparams()*/ false , true );\r\n$modx->getAllGoodFields();\r\n\r\n$modx->renderAll($chunkGoods , ''goods'' , ''print'');\r\n\r\necho $modx->pre($modx->getArrayData(''goods''));\r\n\r\n\r\n/*\r\n$idsF = $modx->getArrayData(''cats'');\r\necho $modx->pre($idsF);\r\n*/', 0, '{}', ' ', 1515163324, 1515167871, 0);
+(10, 'DLT_CATALOG', '', 0, 0, 0, '\r\nif (!is_numeric($root)){\r\n	$root= $modx->documentIdentifier;\r\n}\r\n\r\n\r\n\r\n//$catalog = new catalog_c($modx);\r\n\r\n\r\n\r\n\r\n$modx->c->getCatFromID($root);\r\n\r\necho $modx->pre($modx->c->getArrayData(''cats''));\r\n\r\n\r\n/*\r\n$catalog = $modx->getCatFromID($root);\r\n$catalog->getFields()->sortIt(''cats'', ''menuindex'', ''DESC'')->sliceIt(''cats'' , 0, 2);\r\n*/\r\n\r\n\r\n\r\n//$catalog->getCatFromID($root)->getFields()->sortIt(''cats'', ''menuindex'', ''DESC'');\r\n\r\n//$catalog->renderAll($chunkCats , ''cats'' , ''print'');\r\n\r\n\r\n\r\n\r\n\r\n//$modx->getGoodsFromCats ($root ,false, /*$modx->parseXparams()*/ false , true );\r\n//$modx->getAllGoodFields();\r\n/*\r\n$modx->renderAll($chunkGoods , ''goods'' , ''print'');\r\n\r\necho $modx->pre($modx->getArrayData(''goods''));\r\n\r\n/\r\n	\r\n	\r\n	\r\n/*\r\n$idsF = $modx->getArrayData(''cats'');\r\necho $modx->pre($idsF);\r\n*/', 0, '{}', ' ', 1515163324, 1515491709, 0);
 
 -- --------------------------------------------------------
 
@@ -1157,7 +1196,7 @@ CREATE TABLE IF NOT EXISTS `delta_user_attributes` (
 --
 
 INSERT INTO `delta_user_attributes` (`id`, `internalKey`, `fullname`, `role`, `email`, `phone`, `mobilephone`, `blocked`, `blockeduntil`, `blockedafter`, `logincount`, `lastlogin`, `thislogin`, `failedlogincount`, `sessionid`, `dob`, `gender`, `country`, `street`, `city`, `state`, `zip`, `fax`, `photo`, `comment`, `createdon`, `editedon`) VALUES
-(1, 1, 'Admin', 1, '', '', '', 0, 0, 0, 1, 0, 1513257268, 0, '5pnv2e0pjis7ek63fl28lg2ce3', 0, 0, '', '', '', '', '', '', '', '', 0, 0);
+(1, 1, 'Admin', 1, '', '', '', 0, 0, 0, 2, 1513257268, 1517584487, 0, 'g0vtdsgv10ri0gjrts31e122k3', 0, 0, '', '', '', '', '', '', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1639,7 +1678,7 @@ ALTER TABLE `delta_web_user_settings`
 -- AUTO_INCREMENT для таблицы `delta_active_user_locks`
 --
 ALTER TABLE `delta_active_user_locks`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=144;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=163;
 --
 -- AUTO_INCREMENT для таблицы `delta_categories`
 --
@@ -1664,7 +1703,7 @@ ALTER TABLE `delta_event_log`
 -- AUTO_INCREMENT для таблицы `delta_manager_log`
 --
 ALTER TABLE `delta_manager_log`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=130;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=168;
 --
 -- AUTO_INCREMENT для таблицы `delta_manager_users`
 --
@@ -1714,7 +1753,7 @@ ALTER TABLE `delta_site_module_depobj`
 -- AUTO_INCREMENT для таблицы `delta_site_plugins`
 --
 ALTER TABLE `delta_site_plugins`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT для таблицы `delta_site_snippets`
 --
