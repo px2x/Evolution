@@ -51,13 +51,18 @@ class dDocumentParser extends DocumentParser {
 			$url = $matches[1];
 		}
 
-		$aliasPattern = "/_([a-z-\d]+)\\".$this->config['friendly_url_suffix']."/isu"; // mutch 1
+		$aliasPattern = "/([a-z-\d]+)\\".$this->config['friendly_url_suffix']."/isu"; // mutch 1
 		$filterPattern = "/(_f(\d{1,4}))((_v\d{1,9}(\-\d{1,9})?)+)/isu"; // mutch 2, mutch 3
 		$pagePattern = "/(_page)_(\d{1,5})/isu"; // mutch 2
 		$sortPattern = "/_sort_([a-z]{1,20})_(asc|desc)/isu"; // mutch 1, mutch 2
 		
 		if (preg_match($aliasPattern, $urlOrigin , $matches)){
-			$this->urlXParams['alias'] = $matches[1];
+			
+			if (($idPage = $this->c->checkAliasExist($matches[1])) !== false) {
+			
+				$this->urlXParams['alias'] = $matches[1];
+				$this->urlXParams['idPage'] = $idPage;
+			}
 		}
 
 		if (preg_match_all($filterPattern, $urlOrigin , $matches)){
@@ -86,9 +91,11 @@ class dDocumentParser extends DocumentParser {
 
 	public function sendStrictURI(){
 		if(is_array($this->urlXParams) && count($this->urlXParams)){
+			echo ';;ff';
 			return; //scorn
 		}else {
-			parent::sendStrictURI();
+			echo ';;hh';
+			//parent::sendStrictURI();
 		}
 	}
 	

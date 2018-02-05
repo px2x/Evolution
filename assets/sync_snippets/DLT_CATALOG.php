@@ -18,7 +18,7 @@ $modx->c->renderAll($chunkCats , 'cats' , 'print');
 
 $modx->c->getGoodsFromCats ($root ,false, /*$modx->parseXparams()*/ false , true );
 $modx->c->getAllGoodFields();
-$modx->c->renderAll($chunkGoods , 'goods' , 'print');
+$modx->c->renderAll($chunkGoods , 'goods' , 'print'); 
 
 $idsF = $modx->c->getArrayData('goods');
 echo $modx->pre($idsF);

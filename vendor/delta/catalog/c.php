@@ -24,10 +24,9 @@ class catalog_c {
 	protected static $_VIEW_P_DIR_OPT;
 	protected static $_VIEW_P_ALL_FIELD;
 	protected static $_TABLE_P_IMAGES;
-
+	protected static $_TABLE_P;
 	protected  $catsIDS = array();
 	protected  $goodsIDS = array();
-
 	protected $modx;
 
 
@@ -40,6 +39,7 @@ class catalog_c {
 		self::$_VIEW_P_DIR_OPT = 'v_product_dir_and_option' ;
 		self::$_VIEW_P_ALL_FIELD = 'v_product_all_field' ;
 		self::$_TABLE_P_IMAGES =  $this->modx->getFullTableName( '_product_images' );
+		self::$_TABLE_P =  $this->modx->getFullTableName( '_product' );
 
 		//echo $modx::$_TABLE_TVNAMES;
 	}
@@ -80,6 +80,8 @@ class catalog_c {
 
 
 
+
+
 	/**
 	 * Возвращает список ид всех вложенных категорий
 	 * 
@@ -90,11 +92,9 @@ class catalog_c {
 	function getTreeCat($id = false , $addParent = true, $recursive = false){
 		$idsCats = array();
 		$tmp = array();
-
 		if (!is_numeric($id)) {
 			$id=$this->documentIdentifier;
 		}
-
 		if ($addParent) {
 			if (!in_array($id , $idsCats))  {
 				array_push($idsCats , $id);
@@ -114,6 +114,7 @@ class catalog_c {
 				}
 			}
 		}
+
 		if ($recursive) return $idsCats;
 		else {
 			$this->catsIDS = $idsCats;
@@ -272,23 +273,15 @@ class catalog_c {
 			$id=$this->documentIdentifier;
 		}
 		if (is_numeric($limiter)) $limiter = ' LIMIT '.$limiter ;
-		//$tableFTI = $modx->getFullTableName('_px_filter_values_toitm');
-		//$tableFVD = $modx->getFullTableName('_px_filter_values_descr');
 
 		$dopSql = '';
 		$dopSqlPrnt = ' 1 = 1 ';
 
-
-		/**
-		 * @todo Убрать foreach, сделать через implode (,), изменить sql запрос - вместо кучи OR сделать IN 
-		 */
 		if ($id != $this->rootCatalog && $showInnerCats) {
-			$innerCats = $this->getTreeCat($id);
-			if (is_array($innerCats)) {
-				$dopSqlPrnt = '';
-				foreach ($innerCats as $key => $value) {
-					$dopSqlPrnt .= $dopSqlPrnt == '' ?  ' pd.id_sc = '.$value.' ': ' OR  pd.id_sc = '.$value.' ' ;
-				}
+			$this->getTreeCat($id);
+			$this->modx->pre($this->catsIDS);
+			if (is_array($this->catsIDS)) {
+				$dopSqlPrnt = ' pd.id_sc IN ('.implode(',' , $this->catsIDS).') ';
 			}
 		}else {
 			$showInnerCats = false;
@@ -300,77 +293,14 @@ class catalog_c {
 		 */
 		//if (is_array($xParams)) { // не работает - пока не использовать - возможно переписать
 		if (false) {
-			/*
-			$iter = 0 ;
-			$idsSect = array();
-			foreach ($xParams as $key => $value) {
-				$dopSqlFl = '';
-				$dopSqlGr = '';
-				if ($key == 8 || $key == 9) {
-					if ($key == 8) {
-						$subOperator= '>';
-					}elseif($key == 9) {
-						$subOperator= '<';
-					}
-					$tmpSqlString = ' fvd.name_ru '.$subOperator.'= (SELECT name_ru FROM '.$tableFVD.' WHERE filter_value_id = '.$value[0].' LIMIT 1) '; 
-					$dopSqlFl .= $dopSqlFl == '' ?  $tmpSqlString: ' OR  '.$tmpSqlString ;
-
-				}else {
-					foreach ($value as $keyIn => $valueIn) {
-						$dopSqlFl .= $dopSqlFl == '' ?  ' fti.filter_value_id = '.$valueIn.' ': ' OR  fti.filter_value_id = '.$valueIn.' ' ;
-					}
-				}
-				
-				$operator = '=';
-				$dopSqlGr .= $dopSqlGr == '' ?  " fti.filter_group_id ".$operator." ".$key." AND (".$dopSqlFl.") " : " AND fti.filter_group_id ".$operator." ".$key." AND (".$dopSqlFl.") " ;
-				$sql = "SELECT g.good_id , fti.filter_group_id , fti.filter_value_id FROM ".$tableG." AS g 
-					INNER JOIN  ".$tableFTI." AS fti ON fti.itm_id = g.good_id 
-					INNER JOIN  ".$tableFVD." AS fvd ON fti.filter_value_id = fvd.filter_value_id 
-					WHERE (" .$dopSqlPrnt. ") AND ( ".$dopSqlGr." ) 
-					AND g.visible > 0 AND g.updatedon > ".(time()-60*60*24)." LIMIT 28000 ";
 
 
-				//echo $sql; 
-
-				$result = $modx->db->query($sql); 
-				//echo mysql_error();
-				if( $modx->db->getRecordCount( $result ) >= 1 ) {
-					$k = 0;
-					while( $row = $modx->db->getRow( $result ) ){
-						$ids[$key][$row['good_id']]['id'] = $row['good_id'];
-						$ids[$key][$row['good_id']]['FG'] = $row['filter_group_id'];
-						$ids[$key][$row['good_id']]['FD'] = $row['filter_value_id'];
-						$idsSect[$key][] = $row['good_id']; // for intersect test
-						$lastK = $key;
-					}
-					$iter++;
-				}
-			}
-			
-			$collector = array();
-			$results = array();
-			if (count($idsSect) > 1) {
-				$collector = call_user_func_array ('array_intersect' , $idsSect);
-				foreach ($ids as $keyXp => $valueXp) {
-					foreach ($valueXp as $keyInn => $valueInn) {
-						if (in_array($keyInn ,$collector))
-							$results[$keyInn] = $valueInn;
-					}
-				}
-			}else {
-				$results = $ids[$lastK];
-			}
-
-			return $results;
-			*/
 		}else {
 			$sql = "SELECT * FROM ".self::$_VIEW_P_DIR_OPT." `pd`
 				WHERE ".($showInnerCats ? $dopSqlPrnt :  " pd.id_sc=" . $id )." AND pd.visible > 0 GROUP BY pd.id_product ".$limiter; 
 			$result = $this->modx->db->query($sql);
 			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
-				//$k = 0;
 				while( $row = $this->modx->db->getRow( $result ) ){  
-					//$ids[$k++]['id'] = $row['id_product'];
 					$ids[] = $row['id_product'];
 				}
 			}
@@ -402,11 +332,36 @@ class catalog_c {
 			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
 				while( $row = $this->modx->db->getRow( $result ) ) { 
 					$ids[$value]['fields'] = $row;  
+					$ids[$value]['fields']['path'] = $this->modx->makeURL($row['parent']).$row['alias'].$this->modx->config['friendly_url_suffix']; 
 				}
 			}
 		}
 		$this->goodsIDS = $ids;
 		return $this;
+	}
+
+
+
+
+ 
+
+	/**
+	 * Проверка существования алиаса в товарах
+	 * 
+	 * 
+	 * @return mixed
+	 */
+	function checkAliasExist ($alias = false){
+
+		if ($alias == false) return false;
+			$result = $this->modx->db->query("SELECT *
+				FROM  ".self::$_TABLE_P." WHERE alias =  '".$alias."' LIMIT 1"); 
+			if( $this->modx->db->getRecordCount( $result ) == 1 ) {
+				if( $row = $this->modx->db->getRow( $result ) ) { 
+					return $row['id_product']+1;
+				}
+			}
+		return false;
 	}
 
 

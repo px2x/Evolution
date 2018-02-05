@@ -20,7 +20,6 @@ trait catalog_cRender {
 	protected  $bufer = '';
 
 
-
 	/**
 	 * Верстка. Блоки категорий
 	 * 
@@ -35,15 +34,7 @@ trait catalog_cRender {
 		$list = new ArrayObject( $ids );
 		$iterator = $list->getIterator();
 		$bodyChunk = $this->modx->getChunk($chunkName) ;
-
 		while($iterator->valid()){
-			/**
-			 * @todo Запилить prerenderChunk - пихать в [+px.alias+] - ссылку на карточку товара
-			 */
-			if ($typeField == 'goodsIDS') {
-				//$bodyChunk = prerenderChunk($bodyChunk);
-			} 
-			
 			$tmp = $this->modx->parseText($bodyChunk , $iterator->current()['fields'] , '[+px.');
 			if (array_key_exists('tv' , $iterator->current()))
 				$tmp = $this->modx->parseText($tmp , $iterator->current()['tv'] , '[+px.');

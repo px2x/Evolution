@@ -399,11 +399,13 @@ CREATE OR REPLACE ALGORITHM = UNDEFINED
   `po`.`state_stock`      AS `state_stock`,
   `po`.`counter_visible`  AS `counter_visible`,
   `po`.`create_date`      AS `create_date`,
-  `po`.`update_date`      AS `update_date`
+  `po`.`update_date`      AS `update_date`,
+  `pdir`.`id_sc`          AS `parent`
   FROM (
     `deltaevo`.`delta__product` `p`
     JOIN `deltaevo`.`delta__product_description`    `pd` ON ((`p`.`id_product` = `pd`.`id_product`))
     JOIN `deltaevo`.`delta__product_options`        `po` ON ((`p`.`id_product` = `po`.`id_product`))
+    JOIN `deltaevo`.`delta__product_to_directory`   `pdir` ON ((`p`.`id_product` = `pdir`.`id_product`))
   );
 
 
