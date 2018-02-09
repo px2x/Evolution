@@ -49,6 +49,43 @@ class catalog_c {
 
 
 
+	/**
+	 * 
+	 * 
+	 * 
+	 */
+	public function set ($data = false , $type = 'goodsIDS'){
+		if (! $data) return false;
+		if (! property_exists(__CLASS__ , $type)) return false;
+
+
+		$this->{$type} = array();
+		if (is_array($data)) {
+			foreach ($data as $key => $value) {
+				$this->push($value , $type);
+			}
+		}else {
+			$this->push($data , $type);
+		}
+		
+	}
+
+
+
+
+	/**
+	 * 
+	 * 
+	 * 
+	 */
+	protected function push ($data = false, $type = 'goodsIDS'){
+		if (! is_numeric ($data) ) return false;
+		if (!in_array($data , $this->{$type})){
+			$this->{$type}[] = $data;
+		}
+	}
+
+
 
 
 
@@ -133,9 +170,9 @@ class catalog_c {
 	function getFields(){
 		if (!is_array($this->catsIDS)) return false;
 		$ids=false;
-		foreach ($this->catsIDS as $key => $value) {
+		foreach ($this->catsIDS as $key => $value) { 
 			$result = $this->modx->db->query("SELECT pagetitle, parent, alias, id, isfolder, content, menuindex  
-				FROM  ".$this->modx::$_TABLE_SC." WHERE id =  ".$value.$limiter); 
+				FROM  ".dDocumentParser::$_TABLE_SC." WHERE id =  ".$value.$limiter); 
 
 			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
 				while( $row = $this->modx->db->getRow( $result ) ) { 
@@ -143,8 +180,8 @@ class catalog_c {
 				}
 			}
 
-			$result = $this->modx->db->query("SELECT v.value, n.name FROM  ".$this->modx::$_TABLE_TV." AS v 
-										INNER JOIN ".$this->modx::$_TABLE_TVNAMES." AS n ON n.id = v.tmplvarid
+			$result = $this->modx->db->query("SELECT v.value, n.name FROM  ".dDocumentParser::$_TABLE_TV." AS v 
+										INNER JOIN ".dDocumentParser::$_TABLE_TVNAMES." AS n ON n.id = v.tmplvarid
 										WHERE v.contentid =  ".$value); 
 			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
 				while( $row = $this->modx->db->getRow( $result ) ) {  
@@ -279,7 +316,7 @@ class catalog_c {
 
 		if ($id != $this->rootCatalog && $showInnerCats) {
 			$this->getTreeCat($id);
-			$this->modx->pre($this->catsIDS);
+			//$this->modx->pre($this->catsIDS);
 			if (is_array($this->catsIDS)) {
 				$dopSqlPrnt = ' pd.id_sc IN ('.implode(',' , $this->catsIDS).') ';
 			}
@@ -313,7 +350,7 @@ class catalog_c {
 
 
 
- 
+
 
 	/**
 	 * Выборка всех полей для массива ид товаров
@@ -328,7 +365,7 @@ class catalog_c {
 		foreach ($this->goodsIDS as $key => $value) {
 			$result = $this->modx->db->query("SELECT *
 				FROM  ".self::$_VIEW_P_ALL_FIELD." WHERE id_product =  ".$value." 
-				AND id_language = ".$this->modx::$_LANGUAGE_ID); 
+				AND id_language = ".dDocumentParser::$_LANGUAGE_ID); 
 			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
 				while( $row = $this->modx->db->getRow( $result ) ) { 
 					$ids[$value]['fields'] = $row;  
