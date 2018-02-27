@@ -1,0 +1,313 @@
+O:9:"MagpieRSS":24:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:{i:0;a:8:{s:5:"title";s:5:"1.4.0";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.4.0";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Sat, 27 Jan 2018 03:52:18 PST";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.4.0";s:11:"description";s:6731:"<h2>Evolution CMS 1.4.0</h2>
+<p>For half a year, a lot of work has been done (more than 600 commits), so this is the second major release of Evolution CMS. The first one can be read here (<a href="https://github.com/evolution-cms/evolution/releases/tag/1.3.0">https://github.com/evolution-cms/evolution/releases/tag/1.3.0</a>). The main emphasis of this release is stability of the system, as well as updating and replacing old snippets by new ones (<strong>don´t worry, old snippets will still be supported</strong> via <a href="https://github.com/extras-evolution/">Evolution Extras</a>). So it is possible now to create sites even faster, as well increasing the performance of already existing sites. One main reason for better performance is DocLister, the replacement for Ditto.</p>
+<h3>Most important facts:</h3>
+<ul>
+<li>Demo Site has been updated, all old components have been replaced by new ones, while old components are still available in the extras-repository, but are not recommended for use.</li>
+<li>Ditto -&gt; DocLister</li>
+<li>Wayfinder -&gt; DLMenu</li>
+<li>Breadcrumbs -&gt; DLCrumbs</li>
+<li>Eform -&gt; FormLister</li>
+<li>WebLogin -&gt; FormLister</li>
+<li>WebChangePwd -&gt; FormLister</li>
+<li>WebSignup -&gt; FormLister</li>
+<li>Added DLSitemap</li>
+<li>AjaxSearch moved to Extras</li>
+<li>FirstChildRedirect moved to Extras</li>
+<li>Jot moved to Extras</li>
+<li>MemberCheck moved to Extras</li>
+<li>Personalize moved to Extras</li>
+<li>Reflect moved to Extras</li>
+<li>UltimateParent moved to Extras</li>
+<li>Upgraded phpMailer to 6.0.3</li>
+<li>New feature "Global tabs"</li>
+<li>Grinding TV</li>
+<li>Widget changes the color scheme of the admin area, the button is fullscreen and creates a new document in the menu</li>
+<li>Modifiers disabled by default</li>
+<li>At-Syntax (@-syntax) disabled by default</li>
+<li>New <code>$modx-&gt;clearCache($docid)</code></li>
+<li>Custom Placeholders get replaced before TVs - allows {{chunk? &amp;param=<code>xxx</code>}} with [<em>tv_name_[+param+]</em>] as content inside (useful in conjunction with YAMS)</li>
+<li>added CSS-minify to manager theme</li>
+<li>Fixed popup window from the context menu. Closing a popup window when "saving" or button press "cancel". Hot keys: Esc-&gt;Close, Ctrl+S -&gt; Save, Ctrl+Q -&gt; Save and quit (if focus is in codeMirror editor)</li>
+<li>friendly_url_suffix = / and aliaslistingfolder</li>
+<li>fixed special chars in passwords via htmlspecialchars()</li>
+</ul>
+<h3>Upgrade to version 1.4</h3>
+<p>In order to correctly update from older versions and also exclude the possibility, that there are unnecessary files and security problems left on the site, do the following:</p>
+<ol>
+<li>Do Backup files and DB</li>
+<li>Update to version 1.3.6 - it includes all the old add-ons that were removed in 1.4.0, it provides the opportunity to update all add-ons such as Ditto, EForm, WebLogin</li>
+<li>Delete all the old admin themes (manager / media / style), except "default" and "common"</li>
+<li>Delete the file index-ajax.php - it was used only for AjaxSearch prior to version 1.0.10, leave if you use it for other purposes and you know what you are doing.</li>
+<li>As well as to remove garbage to the maximum, you need to delete the manager folder after making a backup of the file <code>manager/includes/config.inc.php</code>, then copy files from version 1.4.0</li>
+<li>We strongly recommend that you remove all unused old snippets such as: Ditto, Wayfinder, Eform, Breadcrumbs, WebLogin, WebChangePwd, WebSignup</li>
+<li>There is a problem when updating the ManagerManager plug-in from older versions, to solve the problem delete the managermanager folder and install/copy latest version</li>
+<li>TinyMCE3: It is also recommended to disable and delete all its files if you do not use it.</li>
+<li>If you use Modifiers and/or @-syntax then check in the settings if they are enabled. By default in 1.4 these options are disabled.</li>
+<li>If the site is very old, it is recommended to check your server-files for viruses: <a href="https://revisium.com/ai/" rel="nofollow">https://revisium.com/ai/</a></li>
+</ol>
+<h3>Replacing old snippets with new ones</h3>
+<ol>
+<li>As an example, you can install Evo with a demo site, which is already using new snippets.</li>
+<li>To migrate from Ditto to DocLister, the following examples will help:</li>
+</ol>
+<ul>
+<li><a href="http://docs.evo.im/03_extras/doclister.html" rel="nofollow">http://docs.evo.im/03_extras/doclister.html</a></li>
+<li><a href="http://www.evolution-docs.com/extras/doclister/main-parameters" rel="nofollow">http://www.evolution-docs.com/extras/doclister/main-parameters</a></li>
+<li><a href="https://github.com/Nicola1971/Doclister-Tags-in-Ditto-Style">https://github.com/Nicola1971/Doclister-Tags-in-Ditto-Style</a></li>
+<li><a href="https://github.com/Nicola1971/Ditto-to-DocLister-Reference-Tables">https://github.com/Nicola1971/Ditto-to-DocLister-Reference-Tables</a></li>
+</ul>
+<ol start="3">
+<li>To migrate from Wayfinder to DLMenu</li>
+</ol>
+<ul>
+<li><a href="http://docs.evo.im/en/03_extras/dlmenu.html" rel="nofollow">http://docs.evo.im/en/03_extras/dlmenu.html</a></li>
+</ul>
+<ol start="4">
+<li>To migrate from BreadCrumbs to DLCrumbs
+<ul>
+<li><a href="http://docs.evo.im/en/03_extras/dlcrumbs.html" rel="nofollow">http://docs.evo.im/en/03_extras/dlcrumbs.html</a></li>
+</ul>
+</li>
+<li>To migrate from Eform, WebLogin to FormLister
+<ul>
+<li><a href="http://docs.evo.im/03_extras/formlister.html" rel="nofollow">http://docs.evo.im/03_extras/formlister.html</a></li>
+</ul>
+</li>
+</ol>
+<h3>Future plans for version 1.5</h3>
+<ul>
+<li>One main goal is to be able to update everything completely by using Extras, adding the ability to not only install add-ons but also uninstall them clean.</li>
+<li>Integrating Extras into the installation-process, with a recommended set of add-ons preselected by default, and the option to disable add-ons that are not required. This way the Evo main-package will be significantly smaller, and unnecessary files will not clutter your installation.</li>
+<li>This allows to install all add-ons from Extras already in the initial installation-process</li>
+<li>Appearance of the admin area: Updating Bootstrap to version 4, as well as fontAwesone + making it possible to use. Create a basic template in which all the elements of the admin area are given, so you can create and use your own themes, to allow custom concepts of the admin area.</li>
+<li>Also planned: Rebuild the admin on a twig template that will give even more flexibility, for example, change the look of the page without using ManagerManager, which can slow down performance in case there are too many TV parameters. Let´s see how it works out.</li>
+</ul>";s:7:"summary";s:6731:"<h2>Evolution CMS 1.4.0</h2>
+<p>For half a year, a lot of work has been done (more than 600 commits), so this is the second major release of Evolution CMS. The first one can be read here (<a href="https://github.com/evolution-cms/evolution/releases/tag/1.3.0">https://github.com/evolution-cms/evolution/releases/tag/1.3.0</a>). The main emphasis of this release is stability of the system, as well as updating and replacing old snippets by new ones (<strong>don´t worry, old snippets will still be supported</strong> via <a href="https://github.com/extras-evolution/">Evolution Extras</a>). So it is possible now to create sites even faster, as well increasing the performance of already existing sites. One main reason for better performance is DocLister, the replacement for Ditto.</p>
+<h3>Most important facts:</h3>
+<ul>
+<li>Demo Site has been updated, all old components have been replaced by new ones, while old components are still available in the extras-repository, but are not recommended for use.</li>
+<li>Ditto -&gt; DocLister</li>
+<li>Wayfinder -&gt; DLMenu</li>
+<li>Breadcrumbs -&gt; DLCrumbs</li>
+<li>Eform -&gt; FormLister</li>
+<li>WebLogin -&gt; FormLister</li>
+<li>WebChangePwd -&gt; FormLister</li>
+<li>WebSignup -&gt; FormLister</li>
+<li>Added DLSitemap</li>
+<li>AjaxSearch moved to Extras</li>
+<li>FirstChildRedirect moved to Extras</li>
+<li>Jot moved to Extras</li>
+<li>MemberCheck moved to Extras</li>
+<li>Personalize moved to Extras</li>
+<li>Reflect moved to Extras</li>
+<li>UltimateParent moved to Extras</li>
+<li>Upgraded phpMailer to 6.0.3</li>
+<li>New feature "Global tabs"</li>
+<li>Grinding TV</li>
+<li>Widget changes the color scheme of the admin area, the button is fullscreen and creates a new document in the menu</li>
+<li>Modifiers disabled by default</li>
+<li>At-Syntax (@-syntax) disabled by default</li>
+<li>New <code>$modx-&gt;clearCache($docid)</code></li>
+<li>Custom Placeholders get replaced before TVs - allows {{chunk? &amp;param=<code>xxx</code>}} with [<em>tv_name_[+param+]</em>] as content inside (useful in conjunction with YAMS)</li>
+<li>added CSS-minify to manager theme</li>
+<li>Fixed popup window from the context menu. Closing a popup window when "saving" or button press "cancel". Hot keys: Esc-&gt;Close, Ctrl+S -&gt; Save, Ctrl+Q -&gt; Save and quit (if focus is in codeMirror editor)</li>
+<li>friendly_url_suffix = / and aliaslistingfolder</li>
+<li>fixed special chars in passwords via htmlspecialchars()</li>
+</ul>
+<h3>Upgrade to version 1.4</h3>
+<p>In order to correctly update from older versions and also exclude the possibility, that there are unnecessary files and security problems left on the site, do the following:</p>
+<ol>
+<li>Do Backup files and DB</li>
+<li>Update to version 1.3.6 - it includes all the old add-ons that were removed in 1.4.0, it provides the opportunity to update all add-ons such as Ditto, EForm, WebLogin</li>
+<li>Delete all the old admin themes (manager / media / style), except "default" and "common"</li>
+<li>Delete the file index-ajax.php - it was used only for AjaxSearch prior to version 1.0.10, leave if you use it for other purposes and you know what you are doing.</li>
+<li>As well as to remove garbage to the maximum, you need to delete the manager folder after making a backup of the file <code>manager/includes/config.inc.php</code>, then copy files from version 1.4.0</li>
+<li>We strongly recommend that you remove all unused old snippets such as: Ditto, Wayfinder, Eform, Breadcrumbs, WebLogin, WebChangePwd, WebSignup</li>
+<li>There is a problem when updating the ManagerManager plug-in from older versions, to solve the problem delete the managermanager folder and install/copy latest version</li>
+<li>TinyMCE3: It is also recommended to disable and delete all its files if you do not use it.</li>
+<li>If you use Modifiers and/or @-syntax then check in the settings if they are enabled. By default in 1.4 these options are disabled.</li>
+<li>If the site is very old, it is recommended to check your server-files for viruses: <a href="https://revisium.com/ai/" rel="nofollow">https://revisium.com/ai/</a></li>
+</ol>
+<h3>Replacing old snippets with new ones</h3>
+<ol>
+<li>As an example, you can install Evo with a demo site, which is already using new snippets.</li>
+<li>To migrate from Ditto to DocLister, the following examples will help:</li>
+</ol>
+<ul>
+<li><a href="http://docs.evo.im/03_extras/doclister.html" rel="nofollow">http://docs.evo.im/03_extras/doclister.html</a></li>
+<li><a href="http://www.evolution-docs.com/extras/doclister/main-parameters" rel="nofollow">http://www.evolution-docs.com/extras/doclister/main-parameters</a></li>
+<li><a href="https://github.com/Nicola1971/Doclister-Tags-in-Ditto-Style">https://github.com/Nicola1971/Doclister-Tags-in-Ditto-Style</a></li>
+<li><a href="https://github.com/Nicola1971/Ditto-to-DocLister-Reference-Tables">https://github.com/Nicola1971/Ditto-to-DocLister-Reference-Tables</a></li>
+</ul>
+<ol start="3">
+<li>To migrate from Wayfinder to DLMenu</li>
+</ol>
+<ul>
+<li><a href="http://docs.evo.im/en/03_extras/dlmenu.html" rel="nofollow">http://docs.evo.im/en/03_extras/dlmenu.html</a></li>
+</ul>
+<ol start="4">
+<li>To migrate from BreadCrumbs to DLCrumbs
+<ul>
+<li><a href="http://docs.evo.im/en/03_extras/dlcrumbs.html" rel="nofollow">http://docs.evo.im/en/03_extras/dlcrumbs.html</a></li>
+</ul>
+</li>
+<li>To migrate from Eform, WebLogin to FormLister
+<ul>
+<li><a href="http://docs.evo.im/03_extras/formlister.html" rel="nofollow">http://docs.evo.im/03_extras/formlister.html</a></li>
+</ul>
+</li>
+</ol>
+<h3>Future plans for version 1.5</h3>
+<ul>
+<li>One main goal is to be able to update everything completely by using Extras, adding the ability to not only install add-ons but also uninstall them clean.</li>
+<li>Integrating Extras into the installation-process, with a recommended set of add-ons preselected by default, and the option to disable add-ons that are not required. This way the Evo main-package will be significantly smaller, and unnecessary files will not clutter your installation.</li>
+<li>This allows to install all add-ons from Extras already in the initial installation-process</li>
+<li>Appearance of the admin area: Updating Bootstrap to version 4, as well as fontAwesone + making it possible to use. Create a basic template in which all the elements of the admin area are given, so you can create and use your own themes, to allow custom concepts of the admin area.</li>
+<li>Also planned: Rebuild the admin on a twig template that will give even more flexibility, for example, change the look of the page without using ManagerManager, which can slow down performance in case there are too many TV parameters. Let´s see how it works out.</li>
+</ul>";s:14:"date_timestamp";i:1517053938;}i:1;a:8:{s:5:"title";s:9:"1.4.0.RC3";s:4:"link";s:47:"/evolution-cms/evolution/releases/tag/1.4.0.RC3";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Thu, 11 Jan 2018 15:36:18 PST";s:4:"guid";s:49:"tag:github.com,2008:Repository/12320050/1.4.0.RC3";s:11:"description";s:694:"<p>Last RC for 1.4.0 :)</p>
+<ul>
+<li>fix return null in function invokeEvent</li>
+<li>some manager style Fix<br>
+-added onBeforeMoveDocument and onAfterMoveDocument to ajax action(onAfterMoveDocument only on success movement attempt)</li>
+<li>update Langs</li>
+<li>start using PSR2 coding standards</li>
+<li>fix PHP 7.2: count() Parameter must be an array</li>
+<li>fix htmlspecialchars password</li>
+<li>fix rename hidemenu title</li>
+<li>Update PHPMailer 6.0.3</li>
+<li>clear <a href="https://github.com/tags" class="user-mention">@tags</a> from default template, turn off <a href="https://github.com/tags" class="user-mention">@tags</a> by Default</li>
+<li>update FormLister 1.7.12</li>
+</ul>";s:7:"summary";s:694:"<p>Last RC for 1.4.0 :)</p>
+<ul>
+<li>fix return null in function invokeEvent</li>
+<li>some manager style Fix<br>
+-added onBeforeMoveDocument and onAfterMoveDocument to ajax action(onAfterMoveDocument only on success movement attempt)</li>
+<li>update Langs</li>
+<li>start using PSR2 coding standards</li>
+<li>fix PHP 7.2: count() Parameter must be an array</li>
+<li>fix htmlspecialchars password</li>
+<li>fix rename hidemenu title</li>
+<li>Update PHPMailer 6.0.3</li>
+<li>clear <a href="https://github.com/tags" class="user-mention">@tags</a> from default template, turn off <a href="https://github.com/tags" class="user-mention">@tags</a> by Default</li>
+<li>update FormLister 1.7.12</li>
+</ul>";s:14:"date_timestamp";i:1515713778;}i:2;a:8:{s:5:"title";s:9:"1.4.0.RC2";s:4:"link";s:47:"/evolution-cms/evolution/releases/tag/1.4.0.RC2";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Fri, 17 Nov 2017 05:27:34 PST";s:4:"guid";s:49:"tag:github.com,2008:Repository/12320050/1.4.0.RC2";s:11:"description";s:40:"<p>Fixed lot bug founded on 1.4.0.RC</p>";s:7:"summary";s:40:"<p>Fixed lot bug founded on 1.4.0.RC</p>";s:14:"date_timestamp";i:1510925254;}i:3;a:8:{s:5:"title";s:8:"1.4.0.RC";s:4:"link";s:46:"/evolution-cms/evolution/releases/tag/1.4.0.RC";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Mon, 06 Nov 2017 06:04:30 PST";s:4:"guid";s:48:"tag:github.com,2008:Repository/12320050/1.4.0.RC";s:11:"description";s:606:"<ul>
+<li>fixed many bugs from 1.3.* version</li>
+<li>add globalTabs in manager (need turnON in Settings)</li>
+<li>add Color Switcher for manager (need turnON in Settings)</li>
+<li>add setting for use <a href="https://github.com/tags" class="user-mention">@tags</a> (without this site work faster)</li>
+<li>Rewrite Demo Site</li>
+<li>move to Extras (AjaxSearch, Breadcrumbs, Ditto, eForm, JotX, Membercheck, Personalize, Reflect, Wayfinder, WebLogin)</li>
+<li>Improved New Resource Menu in top menu</li>
+<li>Allow {{chunk?&amp;param=<code>xxx</code>}} with [<em>tv_name_[+param+]</em>] as content</li>
+</ul>";s:7:"summary";s:606:"<ul>
+<li>fixed many bugs from 1.3.* version</li>
+<li>add globalTabs in manager (need turnON in Settings)</li>
+<li>add Color Switcher for manager (need turnON in Settings)</li>
+<li>add setting for use <a href="https://github.com/tags" class="user-mention">@tags</a> (without this site work faster)</li>
+<li>Rewrite Demo Site</li>
+<li>move to Extras (AjaxSearch, Breadcrumbs, Ditto, eForm, JotX, Membercheck, Personalize, Reflect, Wayfinder, WebLogin)</li>
+<li>Improved New Resource Menu in top menu</li>
+<li>Allow {{chunk?&amp;param=<code>xxx</code>}} with [<em>tv_name_[+param+]</em>] as content</li>
+</ul>";s:14:"date_timestamp";i:1509977070;}i:4;a:8:{s:5:"title";s:5:"1.3.6";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.6";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Mon, 04 Sep 2017 03:41:48 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.6";s:11:"description";s:124:"<p>-[S] refactor ajax.php, close SQL injection (64j)<br>
+-[F] fix ditto error on 61 str. in ditto.class.inc.php (Dmi3yy)</p>";s:7:"summary";s:124:"<p>-[S] refactor ajax.php, close SQL injection (64j)<br>
+-[F] fix ditto error on 61 str. in ditto.class.inc.php (Dmi3yy)</p>";s:14:"date_timestamp";i:1504521708;}i:5;a:8:{s:5:"title";s:5:"1.3.5";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.5";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Fri, 01 Sep 2017 12:26:02 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.5";s:11:"description";s:2133:"<ul>
+<li>[F] ElementsInTree restyled for new theme, version 1.5.8 (Piotr Matysiak)</li>
+<li>[F] Fix - &lt;<a href="https://github.com/if" class="user-mention">@if</a>&gt;&lt;<a href="https://github.com/elseif" class="user-mention">@elseif</a>&gt;&lt;<a href="https://github.com/else" class="user-mention">@else</a>&gt;&lt;<a href="https://github.com/endif" class="user-mention">@endif</a>&gt; (yamamoto)</li>
+<li>[F] Fix Bugs in Ditto with date and placeholders from version 1.3.4 (yamamoto, Dmi3yy)</li>
+<li>[F] Fix tinymce params underfined bug on frontend (dmi3yy)</li>
+<li>[F] Fix <a href="https://github.com/evolution-cms/evolution/issues/65" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="243697036" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/65">#65</a> Plugin parameters are lost after update to the new version (dmi3yy)</li>
+<li>[C] no need update.php in extras module (dmi3yy)</li>
+<li>[F] variable documentDirty (64j)</li>
+<li>[R] Make sortable list more condensed (Piotr Matysiak)</li>
+<li>[F] <a href="https://github.com/evolution-cms/evolution/issues/187" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="252626751" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/187">#187</a> Ditto is missing placeholders when built-in filters are enabled (yamamoto)</li>
+<li>[F] saved roles users <a href="https://github.com/evolution-cms/evolution/issues/130" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="246521479" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/130">#130</a> (64j)</li>
+<li>[F] <a href="https://github.com/evolution-cms/evolution/issues/192" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="253143482" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/192">#192</a> evo.checkConnectionToServer function (64j)</li>
+</ul>";s:7:"summary";s:2133:"<ul>
+<li>[F] ElementsInTree restyled for new theme, version 1.5.8 (Piotr Matysiak)</li>
+<li>[F] Fix - &lt;<a href="https://github.com/if" class="user-mention">@if</a>&gt;&lt;<a href="https://github.com/elseif" class="user-mention">@elseif</a>&gt;&lt;<a href="https://github.com/else" class="user-mention">@else</a>&gt;&lt;<a href="https://github.com/endif" class="user-mention">@endif</a>&gt; (yamamoto)</li>
+<li>[F] Fix Bugs in Ditto with date and placeholders from version 1.3.4 (yamamoto, Dmi3yy)</li>
+<li>[F] Fix tinymce params underfined bug on frontend (dmi3yy)</li>
+<li>[F] Fix <a href="https://github.com/evolution-cms/evolution/issues/65" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="243697036" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/65">#65</a> Plugin parameters are lost after update to the new version (dmi3yy)</li>
+<li>[C] no need update.php in extras module (dmi3yy)</li>
+<li>[F] variable documentDirty (64j)</li>
+<li>[R] Make sortable list more condensed (Piotr Matysiak)</li>
+<li>[F] <a href="https://github.com/evolution-cms/evolution/issues/187" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="252626751" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/187">#187</a> Ditto is missing placeholders when built-in filters are enabled (yamamoto)</li>
+<li>[F] saved roles users <a href="https://github.com/evolution-cms/evolution/issues/130" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="246521479" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/130">#130</a> (64j)</li>
+<li>[F] <a href="https://github.com/evolution-cms/evolution/issues/192" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="253143482" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/192">#192</a> evo.checkConnectionToServer function (64j)</li>
+</ul>";s:14:"date_timestamp";i:1504293962;}i:6;a:8:{s:5:"title";s:5:"1.3.4";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.4";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Tue, 29 Aug 2017 22:21:43 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.4";s:11:"description";s:1568:"<ul>
+<li>update FormLister to 1.7.8 (dmi3yy)</li>
+<li>update DocLister to 1.3.11 (dmi3yy)</li>
+<li><a href="https://github.com/file" class="user-mention">@file</a> for chunks - <code>{{@FILE:assets/chunks/header.html}}</code></li>
+<li>remove mootols from manage category</li>
+<li>added disable/enable snippets and chuncks <a href="https://github.com/evolution-cms/evolution/issues/126" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="246472027" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/126">#126</a></li>
+<li>Depricated keywords and metatags (not used by default from 1.0.8 version) use TV for this.</li>
+<li>new settings for group TVs (<a href="http://take.ms/OmFYb" rel="nofollow">http://take.ms/OmFYb</a>)</li>
+<li>add header("X-XSS-Protection: 0"); for correct work filamanager.</li>
+<li>Add DLSitemap and DLMenu snippets</li>
+<li>Remove DLBuildMenu</li>
+<li>Refactor manager search and fix permision for this</li>
+<li>remove etomite "compatibility"</li>
+<li>New - $modx-&gt;config['enable_cache']</li>
+<li>New - <code>[*value:makeUrl*]</code> modifier</li>
+<li>As well as bug fixes, for a complete list of changes, see the changelog</li>
+<li>New - <code>&lt;@LITERAL&gt;[*any tags*] {{any chunk}} [[any call]]&lt;@ENDLITERAL&gt;</code> Display tags as it is (block)</li>
+<li>New - <code>\[\*any tags\*\] \{\{any chunk\}\} \[\[any call\]\]</code> Display tags as it is (inline)</li>
+<li>New - <code>{{ any chunk }}</code> Display chunk call as it is</li>
+</ul>";s:7:"summary";s:1568:"<ul>
+<li>update FormLister to 1.7.8 (dmi3yy)</li>
+<li>update DocLister to 1.3.11 (dmi3yy)</li>
+<li><a href="https://github.com/file" class="user-mention">@file</a> for chunks - <code>{{@FILE:assets/chunks/header.html}}</code></li>
+<li>remove mootols from manage category</li>
+<li>added disable/enable snippets and chuncks <a href="https://github.com/evolution-cms/evolution/issues/126" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="246472027" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/126">#126</a></li>
+<li>Depricated keywords and metatags (not used by default from 1.0.8 version) use TV for this.</li>
+<li>new settings for group TVs (<a href="http://take.ms/OmFYb" rel="nofollow">http://take.ms/OmFYb</a>)</li>
+<li>add header("X-XSS-Protection: 0"); for correct work filamanager.</li>
+<li>Add DLSitemap and DLMenu snippets</li>
+<li>Remove DLBuildMenu</li>
+<li>Refactor manager search and fix permision for this</li>
+<li>remove etomite "compatibility"</li>
+<li>New - $modx-&gt;config['enable_cache']</li>
+<li>New - <code>[*value:makeUrl*]</code> modifier</li>
+<li>As well as bug fixes, for a complete list of changes, see the changelog</li>
+<li>New - <code>&lt;@LITERAL&gt;[*any tags*] {{any chunk}} [[any call]]&lt;@ENDLITERAL&gt;</code> Display tags as it is (block)</li>
+<li>New - <code>\[\*any tags\*\] \{\{any chunk\}\} \[\[any call\]\]</code> Display tags as it is (inline)</li>
+<li>New - <code>{{ any chunk }}</code> Display chunk call as it is</li>
+</ul>";s:14:"date_timestamp";i:1504070503;}i:7;a:8:{s:5:"title";s:5:"1.3.3";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.3";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Thu, 20 Jul 2017 00:36:44 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.3";s:11:"description";s:1800:"<ul>
+<li>[GitHub:#f83719a0] - [F] fix for multiTV&lt;10.0.12 (need branch name Evolution) (dmi3yy)</li>
+<li>[GitHub:#3ac1ef3f] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/73" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244110381" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/73">#73</a> update login form (64j)</li>
+<li>[GitHub:#c469b0ed] - [I] Update README.md add version informer (Dmytro Lukianenko)</li>
+<li>[GitHub:#aa00f6c8] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/71" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244104168" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/71">#71</a> (64j)</li>
+<li>[GitHub:#2c71ff6a] - [F] update Readme add php informer (Anton Kolesnikov)</li>
+<li>[GitHub:#900854ba] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/66" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="243992640" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/66">#66</a> format code (64j)</li>
+<li>[GitHub:#ee27d087] - [C] remove unused files DLUsers (dmi3yy)</li>
+<li>[GitHub:#d4c67e6a] - [I] FormLister need PHP &gt;= 5.6 (Anton Kolesnikov)</li>
+<li>[GitHub:#8e4594f8] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/72" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244108608" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/72">#72</a> forma code (64j)</li>
+</ul>";s:7:"summary";s:1800:"<ul>
+<li>[GitHub:#f83719a0] - [F] fix for multiTV&lt;10.0.12 (need branch name Evolution) (dmi3yy)</li>
+<li>[GitHub:#3ac1ef3f] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/73" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244110381" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/73">#73</a> update login form (64j)</li>
+<li>[GitHub:#c469b0ed] - [I] Update README.md add version informer (Dmytro Lukianenko)</li>
+<li>[GitHub:#aa00f6c8] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/71" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244104168" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/71">#71</a> (64j)</li>
+<li>[GitHub:#2c71ff6a] - [F] update Readme add php informer (Anton Kolesnikov)</li>
+<li>[GitHub:#900854ba] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/66" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="243992640" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/66">#66</a> format code (64j)</li>
+<li>[GitHub:#ee27d087] - [C] remove unused files DLUsers (dmi3yy)</li>
+<li>[GitHub:#d4c67e6a] - [I] FormLister need PHP &gt;= 5.6 (Anton Kolesnikov)</li>
+<li>[GitHub:#8e4594f8] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/72" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244108608" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/72">#72</a> forma code (64j)</li>
+</ul>";s:14:"date_timestamp";i:1500536204;}i:8;a:8:{s:5:"title";s:5:"1.3.2";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.2";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Wed, 19 Jul 2017 13:35:47 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.2";s:11:"description";s:850:"<ul>
+<li>[GitHub:#a8fc2fdf] - [F] updater plugin (dmi3yy)</li>
+<li>[GitHub:#ad14254c] - [F] fix <a href="https://github.com/evolution-cms/evolution/issues/75" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244149753" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/75">#75</a> (Pathologic)</li>
+<li>[GitHub:#d29faf9a] - [R] refactor sortableList (64j)</li>
+<li>[GitHub:#ffa63034] - [F] fix <a href="https://github.com/evolution-cms/evolution/issues/68" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244005303" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/68">#68</a>  (for hide widget better use  $widgets['welcome']['hide'] = 1;) (dmi3yy)</li>
+</ul>";s:7:"summary";s:850:"<ul>
+<li>[GitHub:#a8fc2fdf] - [F] updater plugin (dmi3yy)</li>
+<li>[GitHub:#ad14254c] - [F] fix <a href="https://github.com/evolution-cms/evolution/issues/75" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244149753" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/75">#75</a> (Pathologic)</li>
+<li>[GitHub:#d29faf9a] - [R] refactor sortableList (64j)</li>
+<li>[GitHub:#ffa63034] - [F] fix <a href="https://github.com/evolution-cms/evolution/issues/68" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244005303" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/68">#68</a>  (for hide widget better use  $widgets['welcome']['hide'] = 1;) (dmi3yy)</li>
+</ul>";s:14:"date_timestamp";i:1500496547;}i:9;a:8:{s:5:"title";s:5:"1.3.1";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.1";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Wed, 19 Jul 2017 02:56:41 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.1";s:11:"description";s:103:"<ul>
+<li>[F] DocLister 2.3.5 fix paginate (dmi3yy)</li>
+<li>[F] version in top menu (dmi3yy)</li>
+</ul>";s:7:"summary";s:103:"<ul>
+<li>[F] DocLister 2.3.5 fix paginate (dmi3yy)</li>
+<li>[F] version in top menu (dmi3yy)</li>
+</ul>";s:14:"date_timestamp";i:1500458201;}}s:7:"channel";a:6:{s:5:"title";s:28:"Release notes from evolution";s:4:"link";s:51:"https://github.com/evolution-cms/evolution/releases";s:8:"language";s:5:"en-US";s:13:"lastbuilddate";s:29:"Thu, 25 Jan 2018 11:48:19 PST";s:10:"feedburner";a:2:{s:14:"emailserviceid";s:19:"evocms-release-news";s:18:"feedburnerhostname";s:29:"https://feedburner.google.com";}s:7:"tagline";N;}s:9:"textinput";a:0:{}s:5:"image";a:0:{}s:9:"feed_type";s:3:"RSS";s:12:"feed_version";s:3:"2.0";s:8:"encoding";s:5:"UTF-8";s:16:"_source_encoding";s:0:"";s:5:"ERROR";s:0:"";s:7:"WARNING";s:0:"";s:19:"_CONTENT_CONSTRUCTS";a:6:{i:0;s:7:"content";i:1;s:7:"summary";i:2;s:4:"info";i:3;s:5:"title";i:4;s:7:"tagline";i:5;s:9:"copyright";}s:16:"_KNOWN_ENCODINGS";a:3:{i:0;s:5:"UTF-8";i:1;s:8:"US-ASCII";i:2;s:10:"ISO-8859-1";}s:5:"stack";a:0:{}s:9:"inchannel";b:0;s:6:"initem";b:0;s:9:"incontent";b:0;s:11:"intextinput";b:0;s:7:"inimage";b:0;s:17:"current_namespace";b:0;s:15:"source_encoding";s:5:"UTF-8";s:4:"etag";s:29:"eGvUUJZ+fHFu7mU/1VQoblMrss0
+";s:13:"last_modified";s:31:"Fri, 02 Feb 2018 15:00:01 GMT
+";}

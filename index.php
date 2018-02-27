@@ -103,14 +103,9 @@ if(!isset($database_user) || $database_user=="") {
 // start session 
 startCMSSession();
 
-$autoloader = __DIR__.'/vendor/delta/autoload.php';
-if (file_exists($autoloader) && is_readable($autoloader)) {
-	include_once($autoloader);
-}
-
 // initiate a new document parser
 include_once(MODX_MANAGER_PATH.'includes/document.parser.class.inc.php');
-$modx = new dDocumentParser;
+$modx = new DocumentParser;
 
 // set some parser options
 $modx->minParserPasses = 1; // min number of parser recursive loops or passes

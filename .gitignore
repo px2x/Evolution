@@ -1,23 +1,22 @@
 # and any files in the cache directory
-/manager/*
 /.idea/*
 
 # except do not ignore .gitignore
 !.gitignore
 
-/assets/*
-!/assets
-/assets/*
-!/assets/images
-!/assets/sync_snippets
-!/assets/modules
-!/assets/files
-/assets/sync_snippets/*.log
-/assets/modules/docmanager/*
-/assets/modules/store/*
-/assets/*.html
-/assets/*/*.html
-/assets/plugins/*
-!/assets/plugins
-/assets/plugins/*
-!/assets/plugins/test
+#/assets/*
+#!/assets
+#/assets/*
+#!/assets/images
+#!/assets/sync_snippets
+#!/assets/modules
+#!/assets/files
+#/assets/sync_snippets/*.log
+#/assets/modules/docmanager/*
+#/assets/modules/store/*
+#/assets/*.html
+#/assets/*/*.html
+#/assets/plugins/*
+#!/assets/plugins
+#/assets/plugins/*
+#!/assets/plugins/test

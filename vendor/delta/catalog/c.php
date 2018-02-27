@@ -172,7 +172,7 @@ class catalog_c {
 		$ids=false;
 		foreach ($this->catsIDS as $key => $value) { 
 			$result = $this->modx->db->query("SELECT pagetitle, parent, alias, id, isfolder, content, menuindex  
-				FROM  ".dDocumentParser::$_TABLE_SC." WHERE id =  ".$value.$limiter); 
+				FROM  ".DocumentParser::$_TABLE_SC." WHERE id =  ".$value.$limiter); 
 
 			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
 				while( $row = $this->modx->db->getRow( $result ) ) { 
@@ -180,8 +180,8 @@ class catalog_c {
 				}
 			}
 
-			$result = $this->modx->db->query("SELECT v.value, n.name FROM  ".dDocumentParser::$_TABLE_TV." AS v 
-										INNER JOIN ".dDocumentParser::$_TABLE_TVNAMES." AS n ON n.id = v.tmplvarid
+			$result = $this->modx->db->query("SELECT v.value, n.name FROM  ".DocumentParser::$_TABLE_TV." AS v 
+										INNER JOIN ".DocumentParser::$_TABLE_TVNAMES." AS n ON n.id = v.tmplvarid
 										WHERE v.contentid =  ".$value); 
 			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
 				while( $row = $this->modx->db->getRow( $result ) ) {  
@@ -365,7 +365,7 @@ class catalog_c {
 		foreach ($this->goodsIDS as $key => $value) {
 			$result = $this->modx->db->query("SELECT *
 				FROM  ".self::$_VIEW_P_ALL_FIELD." WHERE id_product =  ".$value." 
-				AND id_language = ".dDocumentParser::$_LANGUAGE_ID); 
+				AND id_language = ".DocumentParser::$_LANGUAGE_ID); 
 			if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
 				while( $row = $this->modx->db->getRow( $result ) ) { 
 					$ids[$value]['fields'] = $row;  
