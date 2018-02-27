@@ -26,7 +26,7 @@ class catalog_c {
 	protected static $_TABLE_P_IMAGES;
 	protected static $_TABLE_P;
 	protected  $catsIDS = array();
-	protected  $goodsIDS = array();
+	public  $goodsIDS = array();
 	protected $modx;
 
 
@@ -40,8 +40,6 @@ class catalog_c {
 		self::$_VIEW_P_ALL_FIELD = 'v_product_all_field' ;
 		self::$_TABLE_P_IMAGES =  $this->modx->getFullTableName( '_product_images' );
 		self::$_TABLE_P =  $this->modx->getFullTableName( '_product' );
-
-		//echo $modx::$_TABLE_TVNAMES;
 	}
 
 
@@ -53,12 +51,10 @@ class catalog_c {
 	 * 
 	 * 
 	 * 
-	 */
+	 */ 
 	public function set ($data = false , $type = 'goodsIDS'){
 		if (! $data) return false;
 		if (! property_exists(__CLASS__ , $type)) return false;
-
-
 		$this->{$type} = array();
 		if (is_array($data)) {
 			foreach ($data as $key => $value) {
@@ -66,6 +62,7 @@ class catalog_c {
 			}
 		}else {
 			$this->push($data , $type);
+	
 		}
 		
 	}
@@ -167,7 +164,7 @@ class catalog_c {
 	 * 
 	 * @return mxied
 	 */
-	function getFields(){
+	function getCatFields(){
 		if (!is_array($this->catsIDS)) return false;
 		$ids=false;
 		foreach ($this->catsIDS as $key => $value) { 
@@ -266,7 +263,7 @@ class catalog_c {
 				$ids =  &$this->goodsIDS;
 				$type = 'goodsIDS';
 				break;
-
+				
 			default:
 				return false;
 		}
@@ -380,6 +377,41 @@ class catalog_c {
 
 
 
+
+
+
+	/**
+	 * Возвращает все поля для указанного товара(ID)
+	 * 
+	 * 
+	 * @return array
+	 */
+	function getFields ($id){
+
+
+		if (!is_numeric($id)) return false;
+
+		$ids=false;
+		$result = $this->modx->db->query("SELECT *
+			FROM  ".self::$_VIEW_P_ALL_FIELD." WHERE id_product =  ".$id." 
+			AND id_language = ".DocumentParser::$_LANGUAGE_ID); 
+
+		if( $this->modx->db->getRecordCount( $result ) > 0 ) {
+			if( $row = $this->modx->db->getRow( $result ) ) { 
+				$ids[$id]['fields'] = $row;   
+				$ids[$id]['fields']['path'] = $this->modx->makeURL ( $row['parent'].$row['alias'].$this->modx->config['friendly_url_suffix'] );
+	
+			}
+
+		}
+
+		return $ids;
+	}
+
+
+
+
+
  
 
 	/**
@@ -395,7 +427,7 @@ class catalog_c {
 				FROM  ".self::$_TABLE_P." WHERE alias =  '".$alias."' LIMIT 1"); 
 			if( $this->modx->db->getRecordCount( $result ) == 1 ) {
 				if( $row = $this->modx->db->getRow( $result ) ) { 
-					return $row['id_product']+1;
+					return $row['id_product'];
 				}
 			}
 		return false;

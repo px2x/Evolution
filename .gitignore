@@ -1,5 +1,6 @@
 # and any files in the cache directory
 /.idea/*
+/assets/sync_snippets/*.log
 
 # except do not ignore .gitignore
 !.gitignore

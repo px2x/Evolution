@@ -5,14 +5,14 @@ if (!is_numeric($root)){
 }
 
 
-
+ 
 //$catalog = new catalog_c($modx);
 
 //echo 'ww'.$modx->urlXParams['istCardPage']."ww";
 
 if ($modx->urlXParams['istCardPage'] != true) {
 	$modx->c->getCatFromID($root);
-	$modx->c->getCatFromID($root)->getFields()->sortIt('cats', 'menuindex', 'DESC');
+	$modx->c->getCatFromID($root)->getCatFields()->sortIt('cats', 'menuindex', 'DESC');
 	$modx->c->renderAll($chunkCats , 'cats' , 'print');
 }
 
@@ -20,18 +20,21 @@ if ($modx->urlXParams['istCardPage'] != true) {
 
 if ($modx->urlXParams['istCardPage'] != true) {
 	$modx->c->getGoodsFromCats ($root ,false, /*$modx->parseXparams()*/ false , true );
+	$modx->c->getAllGoodFields();
+	$modx->c->renderAll($chunkGoods , 'goods' , 'print'); 
 }
 //$modx->c->getGoodsFromCats ($root ,false, /*$modx->parseXparams()*/ false , true );
-$modx->c->getAllGoodFields();
-$modx->c->renderAll($chunkGoods , 'goods' , 'print'); 
 
 
 
 
-echo '==============<br>';
-$idsF = $modx->c->getArrayData('goods');
+if ($modx->urlXParams['istCardPage'] == true) {
+	$modx->c->set($modx->urlXParams['idPage']);
+	print_r($modx->c->getFields() );
+	//$modx->c->render($chunkCard , $modx->c->getFields() , 'print');  
+}
 
-echo $modx->pre($idsF);
+
 
 //echo $modx->pre($modx->c->getArrayData('cats'));
 

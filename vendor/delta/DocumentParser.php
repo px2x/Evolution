@@ -73,9 +73,12 @@ class DocumentParser extends DeltaDocumentParser {
 		if (preg_match($aliasPattern, $urlOrigin , $matches)){
 			if (($idPage = $this->c->checkAliasExist($matches[2])) !== false) {
 				$url = $matches[1];
+				
 				$this->urlXParams['alias'] = $matches[2];
 				$this->urlXParams['idPage'] = $idPage;
 				$this->urlXParams['istCardPage'] = true;
+				$this->urlXParams['goodsField'] = $this->c->getFields($idPage);
+				
 				$this->toPlaceholder('istCardPage', '1' , 'px.');
 				//$this->c->set($idPage);
 			}
@@ -108,7 +111,6 @@ class DocumentParser extends DeltaDocumentParser {
 
 	public function sendStrictURI(){
 		if(is_array($this->urlXParams) && count($this->urlXParams)){
-			//echo count($this->urlXParams) . '(!!!)';
 			return; //scorn
 		}else {
 			//parent::sendStrictURI();

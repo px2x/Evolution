@@ -107,19 +107,26 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 	<!-- <div class="link">[~[+px.id+]F~]</div> -->
 	<div class="link"><a href="[+px.path+]">[+px.path+]</a></div>
 </div>
+';$c['test_card']='<div class="item">
+	<div class="image">[+px.istCardPage+]</div>
+	<div class="image">[+px.id_product+]</div>
+	<div class="title">[+px.name+]</div>
+	<!-- <div class="link">[~[+px.id+]F~]</div> -->
+	<div class="link"><a href="[+px.path+]">[+px.path+]</a></div>
+</div>
 ';$s=&$this->snippetCache;$s['DLCrumbs']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLCrumbs.php\';';$s['DLMenu']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLMenu.php\';';$s['DLSitemap']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLSitemap.php\';';$s['DocInfo']='return require MODX_BASE_PATH.\'assets/snippets/docinfo/snippet.docinfo.php\';';$s['DocLister']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DocLister.php\';';$s['FormLister']='return require MODX_BASE_PATH.\'assets/snippets/FormLister/snippet.FormLister.php\';';$s['if']='return require MODX_BASE_PATH.\'assets/snippets/if/snippet.if.php\';';$s['phpthumb']='return require MODX_BASE_PATH.\'assets/snippets/phpthumb/snippet.phpthumb.php\';';$s['summary']='return require MODX_BASE_PATH.\'assets/snippets/summary/snippet.summary.php\';';$s['DLT_CATALOG']='if (!is_numeric($root)){
 	$root= $modx->documentIdentifier;
 }
 
 
-
+ 
 //$catalog = new catalog_c($modx);
 
 //echo \'ww\'.$modx->urlXParams[\'istCardPage\']."ww";
 
 if ($modx->urlXParams[\'istCardPage\'] != true) {
 	$modx->c->getCatFromID($root);
-	$modx->c->getCatFromID($root)->getFields()->sortIt(\'cats\', \'menuindex\', \'DESC\');
+	$modx->c->getCatFromID($root)->getCatFields()->sortIt(\'cats\', \'menuindex\', \'DESC\');
 	$modx->c->renderAll($chunkCats , \'cats\' , \'print\');
 }
 
@@ -127,18 +134,21 @@ if ($modx->urlXParams[\'istCardPage\'] != true) {
 
 if ($modx->urlXParams[\'istCardPage\'] != true) {
 	$modx->c->getGoodsFromCats ($root ,false, /*$modx->parseXparams()*/ false , true );
+	$modx->c->getAllGoodFields();
+	$modx->c->renderAll($chunkGoods , \'goods\' , \'print\'); 
 }
 //$modx->c->getGoodsFromCats ($root ,false, /*$modx->parseXparams()*/ false , true );
-$modx->c->getAllGoodFields();
-$modx->c->renderAll($chunkGoods , \'goods\' , \'print\'); 
 
 
 
 
-echo \'==============<br>\';
-$idsF = $modx->c->getArrayData(\'goods\');
+if ($modx->urlXParams[\'istCardPage\'] == true) {
+	$modx->c->set($modx->urlXParams[\'idPage\']);
+	print_r($modx->c->getFields() );
+	$modx->c->render($chunkCard , $modx->c->getFields() , \'print\');  
+}
 
-echo $modx->pre($idsF);
+
 
 //echo $modx->pre($modx->c->getArrayData(\'cats\'));
 

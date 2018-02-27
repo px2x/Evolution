@@ -52,4 +52,29 @@ trait catalog_cRender {
 
 
 
+
+
+	/**
+	 * Верстка. Блоки категорий
+	 * 
+	 * @param string $chunkName - чанк категории
+	 * @param mixed $mode - false - вернуть верстку, 'print' - напечатать
+	 * @return string
+	 */
+	public function render ($chunkName , $data, $mode = false){
+		$this->bufer = '';
+		$bodyChunk = $this->modx->getChunk($chunkName) ;
+		$this->bufer = $this->modx->parseText($bodyChunk , $data['fields'] , '[+px.');
+		if ($mode == 'print') {
+			echo $this->bufer;
+			$this->bufer = '';
+		}
+		return $this->bufer;
+	}
+
+
+
+
+
+
 }
