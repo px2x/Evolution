@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 27 2018 г., 20:17
+-- Время создания: Мар 02 2018 г., 19:59
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -45,6 +45,65 @@ INSERT INTO `delta__language` (`id_language`, `code`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `delta__price_base`
+--
+
+CREATE TABLE `delta__price_base` (
+  `id_price_base` int(11) NOT NULL,
+  `val` int(10) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `id_price_types` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `delta__price_currency_types`
+--
+
+CREATE TABLE `delta__price_currency_types` (
+  `id_price_c_types` int(11) NOT NULL,
+  `name` varchar(10) NOT NULL,
+  `symbol` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `delta__price_currency_types`
+--
+
+INSERT INTO `delta__price_currency_types` (`id_price_c_types`, `name`, `symbol`) VALUES
+(1, 'RUB', '&#8381;'),
+(2, 'USD', '&#36;'),
+(3, 'EUR', '&euro;');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `delta__price_final`
+--
+
+CREATE TABLE `delta__price_final` (
+  `id_price_base` int(11) NOT NULL,
+  `val` int(10) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `id_price_types` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `delta__price_types`
+--
+
+CREATE TABLE `delta__price_types` (
+  `id_price_types` int(11) NOT NULL,
+  `name` int(11) NOT NULL,
+  `id_price_c_types` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `delta__product`
 --
 
@@ -70,6 +129,7 @@ CREATE TABLE `delta__product_description` (
   `id_product` int(11) NOT NULL,
   `name` varchar(150) DEFAULT NULL,
   `intro` varchar(300) DEFAULT NULL,
+  `description` text NOT NULL,
   `id_language` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -77,9 +137,22 @@ CREATE TABLE `delta__product_description` (
 -- Дамп данных таблицы `delta__product_description`
 --
 
-INSERT INTO `delta__product_description` (`id_product`, `name`, `intro`, `id_language`) VALUES
-(1, 'Кабель D-SUB', 'Позолоченные контакты', 1),
-(1, 'd-sub cable', 'gold', 2);
+INSERT INTO `delta__product_description` (`id_product`, `name`, `intro`, `description`, `id_language`) VALUES
+(1, 'Кабель D-SUB', 'Позолоченные контакты', '', 1),
+(1, 'd-sub cable', 'gold', '', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `delta__product_final`
+--
+
+CREATE TABLE `delta__product_final` (
+  `id_product_final` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `id_price_final` int(11) NOT NULL,
+  `action_for_price` set('ADD_TO_BASE','REPLACE_BASE','','') NOT NULL DEFAULT 'REPLACE_BASE'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -198,6 +271,7 @@ CREATE TABLE `delta__props_to_category` (
 --
 
 CREATE TABLE `delta__props_to_product` (
+  `id_product_final` int(11) NOT NULL,
   `id_prop` int(11) NOT NULL,
   `id_product` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -378,6 +452,30 @@ ALTER TABLE `delta__language`
   ADD KEY `idx_name` (`name`);
 
 --
+-- Индексы таблицы `delta__price_base`
+--
+ALTER TABLE `delta__price_base`
+  ADD PRIMARY KEY (`id_price_base`);
+
+--
+-- Индексы таблицы `delta__price_currency_types`
+--
+ALTER TABLE `delta__price_currency_types`
+  ADD PRIMARY KEY (`id_price_c_types`);
+
+--
+-- Индексы таблицы `delta__price_final`
+--
+ALTER TABLE `delta__price_final`
+  ADD PRIMARY KEY (`id_price_base`);
+
+--
+-- Индексы таблицы `delta__price_types`
+--
+ALTER TABLE `delta__price_types`
+  ADD PRIMARY KEY (`id_price_types`);
+
+--
 -- Индексы таблицы `delta__product`
 --
 ALTER TABLE `delta__product`
@@ -389,6 +487,12 @@ ALTER TABLE `delta__product`
 ALTER TABLE `delta__product_description`
   ADD KEY `product_descr_to_language_idx` (`id_language`),
   ADD KEY `product_descr_to_product` (`id_product`);
+
+--
+-- Индексы таблицы `delta__product_final`
+--
+ALTER TABLE `delta__product_final`
+  ADD PRIMARY KEY (`id_product_final`);
 
 --
 -- Индексы таблицы `delta__product_images`
@@ -493,10 +597,40 @@ ALTER TABLE `delta__language`
   MODIFY `id_language` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT для таблицы `delta__price_base`
+--
+ALTER TABLE `delta__price_base`
+  MODIFY `id_price_base` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `delta__price_currency_types`
+--
+ALTER TABLE `delta__price_currency_types`
+  MODIFY `id_price_c_types` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `delta__price_final`
+--
+ALTER TABLE `delta__price_final`
+  MODIFY `id_price_base` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `delta__price_types`
+--
+ALTER TABLE `delta__price_types`
+  MODIFY `id_price_types` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `delta__product`
 --
 ALTER TABLE `delta__product`
   MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `delta__product_final`
+--
+ALTER TABLE `delta__product_final`
+  MODIFY `id_product_final` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `delta__props`

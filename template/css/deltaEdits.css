@@ -1,0 +1,48 @@
+.deltaEPCont {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1001;
+}
+
+.deltaEditProduct {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1000;
+  display: none;
+  background: white;
+  padding: 3vh 3vw;
+  box-sizing: border-box;
+}
+.deltaEditProduct .tabs {
+  display: flex;
+}
+.deltaEditProduct .tabs .tab {
+  padding: 10px 20px;
+  padding: 10px 20px;
+  border-top: 2px solid #eee;
+  margin-right: 11px;
+  cursor: pointer;
+}
+.deltaEditProduct .tabs .tab.active {
+  border-top: 2px solid #f00;
+}
+.deltaEditProduct.active {
+  display: block;
+}
+.deltaEditProduct input {
+  border: 1px solid #eee;
+  padding: 8px 15px;
+}
+.deltaEditProduct .cont {
+  display: none;
+}
+.deltaEditProduct .cont.active {
+  display: block;
+}

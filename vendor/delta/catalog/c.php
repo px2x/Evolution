@@ -18,6 +18,8 @@
 class catalog_c {
 
 	use catalog_cRender;
+	use catalog_cAdmin;
+
 
 
 	protected $rootCatalog = 3;
@@ -387,10 +389,7 @@ class catalog_c {
 	 * @return array
 	 */
 	function getFields ($id){
-
-
 		if (!is_numeric($id)) return false;
-
 		$ids=false;
 		$result = $this->modx->db->query("SELECT *
 			FROM  ".self::$_VIEW_P_ALL_FIELD." WHERE id_product =  ".$id." 
@@ -399,7 +398,7 @@ class catalog_c {
 		if( $this->modx->db->getRecordCount( $result ) > 0 ) {
 			if( $row = $this->modx->db->getRow( $result ) ) { 
 				$ids[$id]['fields'] = $row;   
-				$ids[$id]['fields']['path'] = $this->modx->makeURL ( $row['parent'].$row['alias'].$this->modx->config['friendly_url_suffix'] );
+				$ids[$id]['fields']['path'] = $this->modx->makeURL ( $row['parent']).$row['alias'].$this->modx->config['friendly_url_suffix'];
 	
 			}
 

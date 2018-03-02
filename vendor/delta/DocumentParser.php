@@ -80,6 +80,7 @@ class DocumentParser extends DeltaDocumentParser {
 				$this->urlXParams['goodsField'] = $this->c->getFields($idPage);
 				
 				$this->toPlaceholder('istCardPage', '1' , 'px.');
+				$this->toPlaceholder('idPage', $idPage , 'px.');
 				//$this->c->set($idPage);
 			}
 		}

@@ -1,12 +1,15 @@
 <?php
-
 /**
  *
  *
  *
  *
+ *
  */
-class Rst
+
+
+
+class RQ
 {
 
 
@@ -17,10 +20,23 @@ class Rst
 
     private function __construct()
     {
-        //$this->P = $_POST;
-        //$this->G = $_GET;
-        self::$G = $_GET;
-        self::$P = $_POST;
+
+        
+        if (count($_GET)) {
+            foreach ($_GET as $key => $value) {
+                self::$G[addslashes(strip_tags($key))] = addcslashes(strip_tags($value));
+    
+            }
+        }
+
+
+        if (count($_POST)) {
+            foreach ($_POST as $key => $value) {
+                self::$P[addslashes(strip_tags($key))] = addcslashes(strip_tags($value));
+            }
+        }
+
+       
     }
 
 
@@ -45,34 +61,21 @@ class Rst
     }
 
 
-    public static function P()
+    public static function P($feild = false)
     {
+        if (array_key_exists($feild, self::$P)) {
+            return self::$P[$feild];
+        }
         return (self::$P);
     }
 
 
-    public static function G()
+    public static function G($feild = false)
     {
-        return (self::$G);
-    }
-
-    public static function GET($feild = false)
-    {
-        if (!$feild) return false;
         if (array_key_exists($feild, self::$G)) {
             return self::$G[$feild];
         }
-        return false;
-    }
-
-
-    public static function POST($feild = false)
-    {
-        if (!$feild) return false;
-        if (array_key_exists($feild, self::$P)) {
-            return self::$P[$feild];
-        }
-        return false;
+        return (self::$G);
     }
 
 

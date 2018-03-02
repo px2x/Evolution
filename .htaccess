@@ -2,10 +2,14 @@
 # http://rtfm.modx.com/evolution/1.0/administration/friendly-url-solutions
 # including for unexpected logouts in multi-server/cloud environments
 # and especially for the first three commented out rules
-#ff
 #php_flag register_globals Off
 AddDefaultCharset utf-8
-#php_value date.timezone Europe/Moscow
+php_value date.timezone Europe/Moscow
+
+php_flag display_errors on
+php_flag display_startup_errors on
+php_value error_reporting "E_ALL"
+	
 
 #Options +FollowSymlinks
 RewriteEngine On

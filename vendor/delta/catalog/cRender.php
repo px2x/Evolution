@@ -55,7 +55,7 @@ trait catalog_cRender {
 
 
 	/**
-	 * Верстка. Блоки категорий
+	 * Верстка. Карточка товара
 	 * 
 	 * @param string $chunkName - чанк категории
 	 * @param mixed $mode - false - вернуть верстку, 'print' - напечатать
@@ -63,7 +63,7 @@ trait catalog_cRender {
 	 */
 	public function render ($chunkName , $data, $mode = false){
 		$this->bufer = '';
-		$bodyChunk = $this->modx->getChunk($chunkName) ;
+		$bodyChunk = $this->modx->getChunk($chunkName); 
 		$this->bufer = $this->modx->parseText($bodyChunk , $data['fields'] , '[+px.');
 		if ($mode == 'print') {
 			echo $this->bufer;
@@ -71,6 +71,7 @@ trait catalog_cRender {
 		}
 		return $this->bufer;
 	}
+	
 
 
 

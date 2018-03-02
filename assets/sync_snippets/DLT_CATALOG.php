@@ -29,9 +29,9 @@ if ($modx->urlXParams['istCardPage'] != true) {
 
 
 if ($modx->urlXParams['istCardPage'] == true) {
-	$modx->c->set($modx->urlXParams['idPage']);
-	print_r($modx->c->getFields() );
-	//$modx->c->render($chunkCard , $modx->c->getFields() , 'print');  
+	//$modx->c->set($modx->urlXParams['idPage']);
+	//print_r($modx->c->getFields($modx->urlXParams['idPage']) );
+	$modx->c->render($chunkCard , $modx->c->getFields($modx->urlXParams['idPage'])[$modx->urlXParams['idPage']]  , 'print'); 
 }
 
 

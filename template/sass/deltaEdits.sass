@@ -1,0 +1,51 @@
+@mixin fullSpace
+	position: absolute
+	left: 0
+	right: 0
+	top: 0
+	bottom: 0
+	width: 100vw
+	height: 100vh
+
+
+
+
+.deltaEPCont
+	position: fixed
+	right: 0
+	top: 0
+	z-index: 1001
+
+
+.deltaEditProduct
+	@include fullSpace
+	position: fixed
+	z-index: 1000
+	display: none
+	background: rgb(255, 255, 255)
+	padding: 3vh 3vw
+	box-sizing: border-box
+
+	.tabs
+		display: flex
+		.tab
+			padding: 10px 20px
+			padding: 10px 20px
+			border-top: 2px solid #eee
+			margin-right: 11px
+			cursor: pointer
+			
+			&.active
+				border-top: 2px solid #f00
+
+	&.active
+		display: block
+
+	input
+		border: 1px solid #eee
+		padding: 8px 15px
+
+	.cont
+		display: none
+		&.active
+			display: block 
