@@ -46,3 +46,75 @@
 .deltaEditProduct .cont.active {
   display: block;
 }
+.deltaEditProduct .tabContent {
+  padding-top: 40px;
+}
+.deltaEditProduct .tabContent .oneInut {
+  position: relative;
+  margin-bottom: 20px;
+}
+.deltaEditProduct .tabContent .oneInut label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  transition: 200ms;
+}
+.deltaEditProduct .tabContent .oneInut input {
+  background: #f9f9f9;
+  padding: 15px 15px;
+  min-width: 600px;
+  border-radius: 2px;
+  outline: none;
+}
+.deltaEditProduct .tabContent .oneInut input:focus + label, .deltaEditProduct .tabContent .oneInut input:not([value=""]) + label {
+  top: -15px !important;
+  font-size: 12px !important;
+}
+.deltaEditProduct .tabContent .oneInut input[value=""] + label {
+  top: 15px;
+  font-size: 14px;
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 4vh;
+}
+.controls .dControl {
+  background: #1d3384;
+  border: none;
+  color: #fff;
+  padding: 10px 22px;
+  margin-right: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.controls .dControl:hover {
+  filter: brightness(1.1);
+}
+
+.imagelist {
+  max-height: 70vh;
+  display: flex;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.imagelist .imgprogress {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 0 10px 10px 0;
+  background: #eee;
+  position: relative;
+}
+.imagelist img {
+  max-width: 100%;
+}
+.imagelist .progress-bar-mini {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  width: 0;
+  background: rgba(0, 67, 255, 0.38);
+}

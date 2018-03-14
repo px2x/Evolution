@@ -49,3 +49,84 @@
 		display: none
 		&.active
 			display: block 
+
+	.tabContent 
+		padding-top: 40px
+
+		.oneInut
+			position: relative
+			margin-bottom: 20px
+
+			label
+				position: absolute
+				top: 15px
+				left: 15px
+				transition: 200ms
+
+
+			input
+				background: #f9f9f9
+				padding: 15px 15px
+				min-width: 600px
+				border-radius: 2px
+				outline: none
+
+			input:focus + label , input:not([value=""]) + label
+				top: -15px !important
+				font-size: 12px !important
+
+
+			input[value=""]+label
+				top: 15px
+				font-size: 14px
+
+
+
+
+
+
+
+
+
+.controls
+	position: absolute
+	bottom: 0
+	margin-bottom: 4vh
+
+	.dControl
+		background: #1d3384
+		border: none
+		color: #fff
+		padding: 10px 22px
+		margin-right: 10px
+		border-radius: 2px
+		cursor: pointer
+
+		&:hover
+			filter: brightness(1.1)
+
+
+.imagelist
+	max-height: 70vh
+	display: flex
+	margin-top: 40px
+	flex-wrap: wrap
+
+	.imgprogress
+		width: 100px
+		height: 100px
+		display: block
+		margin: 0 10px 10px 0
+		background: #eee
+		position: relative
+
+	img
+		max-width: 100%
+
+	.progress-bar-mini
+		position: absolute
+		bottom: 0
+		top: 0
+		left: 0
+		width: 0
+		background: rgba(0, 67, 255, 0.380)

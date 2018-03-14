@@ -1,6 +1,7 @@
 "use strict";
 
 
+
 $(window).on('load', function () {
     window.addEventListener('hashchange', hashchange);
     hashchange();
@@ -23,6 +24,15 @@ $(window).on('load', function () {
 
 
 $(document).ready(function () {
+
+            var list = document.getElementById("dloadImageList");
+        Sortable.create(list); // That's all.
+
+
+
+
+
+
 
     $(document).on("click", ".deltaEPCont", function (evt) {
         evt.stopPropagation();
@@ -48,6 +58,122 @@ $(document).ready(function () {
 
 
 
+    $(document).on("keyup", "input", function (evt) {
+        $(this).attr("value" , $(this).val());
+    });
+
+
+
+    
+
+    $(document).on("change", "#uploaded_file", function (evt) {
+        var files = $(this).prop('files');
+        var data = new FormData();
+        var imageList = [];
+        console.log(files);
+        for (var i = 0, f; f = files[i]; i++) {
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+            imageList.push(f);
+            var reader = new FileReader();
+            reader.onload = (function(theFile) {
+                return function(e) {
+                    var arrnames = theFile.name.split('.'); 
+                    var ext = arrnames.pop();
+                    var filename = arrnames.join('.');
+                    var filenameNotDot = arrnames.join('');
+                    var span =  $('<span>', { 
+                      class:  'imgprogress',                    
+                    });
+                    span.append('<div class="progress-bar-mini orange shine"></div>');
+                    span.append( ['<img class="thumb" src="', e.target.result,
+                                    '" title="', filename, '"/>'].join(''));
+                    span.appendTo('.imagelist');  
+                    data.append( i , theFile );      
+                };
+            })(f);
+            reader.readAsDataURL(f);
+
+        }
+        setTimeout(uploadImage, 100 , imageList , 0);
+       /// console.log(imageList);
+    });
+
+
+
+
+  
+function uploadImage(data  , cnt) {
+    var formData = new FormData();
+    formData.append( 0 , data[cnt] );
+    var current = data[cnt];
+    var arrnames = current.name.split('.');  
+    var ext = arrnames.pop();
+    var filename = arrnames.join('.'); 
+    var filenameNotDot = arrnames.join(''); 
+    var progress = $('.imgprogress img[title="'+filename+'"]').parent().find('.progress-bar-mini');
+    console.log(progress);
+
+    let imageListState = [];
+
+    if (imageListState[cnt] == 'loaded') {
+
+        if (cnt+1 < data.length) {
+            uploadImage(data  , cnt+1);
+        }
+
+    } else {
+
+        $.ajax({
+            url: 'ajax/adm/?event=uploadimages',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            beforeSend: function(request) {
+                request.setRequestHeader("xDltFetching", true);
+            },
+            xhr: function(){
+            var xhr = $.ajaxSettings.xhr();
+                xhr.upload.addEventListener('progress', function(evt){
+                    if(evt.lengthComputable) {
+                         var percentComplete = Math.ceil(evt.loaded / evt.total * 100);
+                        progress.css({width: percentComplete + '%'});
+                    } 
+                }, true);
+                return xhr;
+            },
+     
+            success: function( respond ){
+                if (respond.result){
+                    imageListState[cnt-1] = 'loaded';
+                    var percentFullComplete = Math.ceil(cnt / data.length * 100);
+                    progress.remove();
+                    $(".cont[data-tabid=2]").append('<input type="hidden" name="photo[]" value="'+respond.path+'">')
+                    $("#progressFillImg").css({width: percentFullComplete + '%'});
+                    if (percentFullComplete >= 100) {
+                        $("#progressFillImg").css({width: '0%'});
+                    }
+
+                    if (cnt < data.length) uploadImage(data  , cnt);
+                }else {
+                    if (cnt < data.length -1) uploadImage(data  , ++cnt);
+                }
+            },
+            error: function(){
+                if (cnt < data.length -1 ) uploadImage(data  , ++cnt);
+            }
+        });  
+  }   
+  cnt++;  
+}
+
+
+
+
 
     $(document).on("click", ".dControl.save", function (evt) {
         var form = new FormData();
@@ -58,7 +184,7 @@ $(document).ready(function () {
         }
         form.append("id_product" , $(".deltaEditProduct").data("productid"));
         form.append("event" , "addOrUpdate");
-
+        form.append("description" , tinyMCE.activeEditor.getContent());
 
 
         let fetchParams = {
@@ -70,18 +196,22 @@ $(document).ready(function () {
         }
 
 
-
         let promise = fetch('ajax/adm/' , fetchParams)
         	.then(response => {
         		if (response.status != 200) throw new Error("o_O");
         		return response.json();
         	})
         	.then(data => {
-        		console.log(data);
+                if (data.state) {
+                    console.log('yep');
+                }else {
+                    console.log('nope');
+                }
         	})
         	.catch(message=>{
         		console.log(message);
-        	});
+            });
+
 
 
 

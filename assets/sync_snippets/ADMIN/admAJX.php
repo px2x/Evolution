@@ -1,9 +1,34 @@
 <?php
 
-/*
-$a['state'] = true;
-$a["text"] = 'gggggggggggggg';
-*/
+$headers = getallheaders();
+
+if ($headers['xDltFetching'] == 'true'){
+
 	
-return json_encode($_POST);
+	if (RQ::P('event') == 'addOrUpdate') {
+		if ($response['che'] = $modx->c->checkExists(RQ::P('id_product'))){
+			$response['evt'] =  'update';
+			$response['state'] =  $modx->c->updateGoods(RQ::P('id_product'));
+		}else {
+			$response['evt'] = 'create';
+		}
+	}
+
+
+
+
+
+
+
+
+
+	if (RQ::G('event') == 'uploadimages') {
+		$response = $modx->c->uploadimages(); 
+	}
+	
+	
+}
+	
+return json_encode($response);
+
 ?>

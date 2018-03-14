@@ -392,6 +392,7 @@ CREATE OR REPLACE ALGORITHM = UNDEFINED
   `p`.`alias`             AS `alias`,
   `pd`.`name`             AS `name`,
   `pd`.`intro`            AS `intro`,
+  `pd`.`description`      AS `description`,
   `pd`.`id_language`      AS `id_language`,
   `po`.`visible`          AS `visible`,
   `po`.`searchable`       AS `searchable`,

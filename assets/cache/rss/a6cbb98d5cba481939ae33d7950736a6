@@ -1,4 +1,56 @@
-O:9:"MagpieRSS":24:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:{i:0;a:8:{s:5:"title";s:5:"1.4.0";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.4.0";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Sat, 27 Jan 2018 03:52:18 PST";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.4.0";s:11:"description";s:6731:"<h2>Evolution CMS 1.4.0</h2>
+O:9:"MagpieRSS":23:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:{i:0;a:8:{s:5:"title";s:5:"1.4.1";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.4.1";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Fri, 02 Mar 2018 01:01:51 PST";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.4.1";s:11:"description";s:4188:"<ul>
+<li>[F] DocLister Extra install gives warning <a href="https://github.com/evolution-cms/evolution/issues/463" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="291586507" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/463">#463</a> (Pathologic)</li>
+<li>[F] install error on PHP 7.2 (Vitaliy Rudnyh)</li>
+<li>[F] <a href="https://github.com/evolution-cms/evolution/issues/481" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="292395214" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/481">#481</a> Fix export of Static-HTML with FURLs enabled (Deesen)</li>
+<li>[F] global tabs dont work on 1.4 with manager role <a href="https://github.com/evolution-cms/evolution/issues/484" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="293330356" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/484">#484</a> (64j)</li>
+<li>[F] Cookies mess in startCMSSession <a href="https://github.com/evolution-cms/evolution/issues/396" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="278603870" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/396">#396</a> (Pathologic)</li>
+<li>[F] Store module unparsed placeholders (Pathologic)</li>
+<li>[F] broken OnWUsrFormRender event (Pathologic)</li>
+<li>[F] Fix Information tab logo path (Mr B)</li>
+<li>[F] Missing hover style for TV Insert <a href="https://github.com/evolution-cms/evolution/issues/475" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="292111469" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/475">#475</a> (64j)</li>
+<li>[F] fix for moving content to another tab (Mr B)</li>
+<li>[F] Deactivated user is active after forgot password mail <a href="https://github.com/evolution-cms/evolution/issues/42" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="243174849" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/42">#42</a> (Pathologic)</li>
+<li>[F] conflict with manager and web-user sessions <a href="https://github.com/evolution-cms/evolution/issues/258" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="260175605" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/258">#258</a> (Pathologic)</li>
+<li>[F] <a href="https://github.com/evolution-cms/evolution/issues/477" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="292145024" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/477">#477</a> Cache plugin-properties using parseProperties() (Deesen)</li>
+<li>[F] 1.4.0 not work params in chunks <a href="https://github.com/evolution-cms/evolution/issues/478" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="292290696" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/478">#478</a> (Pathologic)</li>
+<li>[F] tree buttons JS (Piotr Matysiak)</li>
+<li>[U] Quick Manager+ and some fix (Mr B)</li>
+<li>[U] FormLister (Pathologic)</li>
+<li>[U] DocLister (Agel_Nash)</li>
+<li>[I] random table prefix (Agel_Nash)</li>
+<li>[I] Check exists mysqi extension (Vitaliy Rudnyh)</li>
+<li>[I] Outdated Extras Check (Nicola)</li>
+<li>[I] ability to use extended DocumentParser class (Pathologic)</li>
+<li>[I] Extras/Store - New feature "Install by file-upload" - accepts ZIP-files from <a href="https://github.com/extras-evolution/">https://github.com/extras-evolution/</a> (Deesen)</li>
+<li>[I] Updated TinyMCE4 to v4.7.4 (from v4.6.3) - added param "mobile" to theme.base - added param "Skin-Theme" to settings (Deesen)</li>
+<li>[R] MODxMailer - log only public properties (Pathologic)</li>
+</ul>";s:7:"summary";s:4188:"<ul>
+<li>[F] DocLister Extra install gives warning <a href="https://github.com/evolution-cms/evolution/issues/463" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="291586507" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/463">#463</a> (Pathologic)</li>
+<li>[F] install error on PHP 7.2 (Vitaliy Rudnyh)</li>
+<li>[F] <a href="https://github.com/evolution-cms/evolution/issues/481" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="292395214" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/481">#481</a> Fix export of Static-HTML with FURLs enabled (Deesen)</li>
+<li>[F] global tabs dont work on 1.4 with manager role <a href="https://github.com/evolution-cms/evolution/issues/484" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="293330356" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/484">#484</a> (64j)</li>
+<li>[F] Cookies mess in startCMSSession <a href="https://github.com/evolution-cms/evolution/issues/396" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="278603870" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/396">#396</a> (Pathologic)</li>
+<li>[F] Store module unparsed placeholders (Pathologic)</li>
+<li>[F] broken OnWUsrFormRender event (Pathologic)</li>
+<li>[F] Fix Information tab logo path (Mr B)</li>
+<li>[F] Missing hover style for TV Insert <a href="https://github.com/evolution-cms/evolution/issues/475" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="292111469" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/475">#475</a> (64j)</li>
+<li>[F] fix for moving content to another tab (Mr B)</li>
+<li>[F] Deactivated user is active after forgot password mail <a href="https://github.com/evolution-cms/evolution/issues/42" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="243174849" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/42">#42</a> (Pathologic)</li>
+<li>[F] conflict with manager and web-user sessions <a href="https://github.com/evolution-cms/evolution/issues/258" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="260175605" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/258">#258</a> (Pathologic)</li>
+<li>[F] <a href="https://github.com/evolution-cms/evolution/issues/477" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="292145024" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/477">#477</a> Cache plugin-properties using parseProperties() (Deesen)</li>
+<li>[F] 1.4.0 not work params in chunks <a href="https://github.com/evolution-cms/evolution/issues/478" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="292290696" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/478">#478</a> (Pathologic)</li>
+<li>[F] tree buttons JS (Piotr Matysiak)</li>
+<li>[U] Quick Manager+ and some fix (Mr B)</li>
+<li>[U] FormLister (Pathologic)</li>
+<li>[U] DocLister (Agel_Nash)</li>
+<li>[I] random table prefix (Agel_Nash)</li>
+<li>[I] Check exists mysqi extension (Vitaliy Rudnyh)</li>
+<li>[I] Outdated Extras Check (Nicola)</li>
+<li>[I] ability to use extended DocumentParser class (Pathologic)</li>
+<li>[I] Extras/Store - New feature "Install by file-upload" - accepts ZIP-files from <a href="https://github.com/extras-evolution/">https://github.com/extras-evolution/</a> (Deesen)</li>
+<li>[I] Updated TinyMCE4 to v4.7.4 (from v4.6.3) - added param "mobile" to theme.base - added param "Skin-Theme" to settings (Deesen)</li>
+<li>[R] MODxMailer - log only public properties (Pathologic)</li>
+</ul>";s:14:"date_timestamp";i:1519981311;}i:1;a:8:{s:5:"title";s:5:"1.4.0";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.4.0";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Sat, 27 Jan 2018 03:52:18 PST";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.4.0";s:11:"description";s:6731:"<h2>Evolution CMS 1.4.0</h2>
 <p>For half a year, a lot of work has been done (more than 600 commits), so this is the second major release of Evolution CMS. The first one can be read here (<a href="https://github.com/evolution-cms/evolution/releases/tag/1.3.0">https://github.com/evolution-cms/evolution/releases/tag/1.3.0</a>). The main emphasis of this release is stability of the system, as well as updating and replacing old snippets by new ones (<strong>don´t worry, old snippets will still be supported</strong> via <a href="https://github.com/extras-evolution/">Evolution Extras</a>). So it is possible now to create sites even faster, as well increasing the performance of already existing sites. One main reason for better performance is DocLister, the replacement for Ditto.</p>
 <h3>Most important facts:</h3>
 <ul>
@@ -164,7 +216,7 @@ O:9:"MagpieRSS":24:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:
 <li>This allows to install all add-ons from Extras already in the initial installation-process</li>
 <li>Appearance of the admin area: Updating Bootstrap to version 4, as well as fontAwesone + making it possible to use. Create a basic template in which all the elements of the admin area are given, so you can create and use your own themes, to allow custom concepts of the admin area.</li>
 <li>Also planned: Rebuild the admin on a twig template that will give even more flexibility, for example, change the look of the page without using ManagerManager, which can slow down performance in case there are too many TV parameters. Let´s see how it works out.</li>
-</ul>";s:14:"date_timestamp";i:1517053938;}i:1;a:8:{s:5:"title";s:9:"1.4.0.RC3";s:4:"link";s:47:"/evolution-cms/evolution/releases/tag/1.4.0.RC3";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Thu, 11 Jan 2018 15:36:18 PST";s:4:"guid";s:49:"tag:github.com,2008:Repository/12320050/1.4.0.RC3";s:11:"description";s:694:"<p>Last RC for 1.4.0 :)</p>
+</ul>";s:14:"date_timestamp";i:1517053938;}i:2;a:8:{s:5:"title";s:9:"1.4.0.RC3";s:4:"link";s:47:"/evolution-cms/evolution/releases/tag/1.4.0.RC3";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Thu, 11 Jan 2018 15:36:18 PST";s:4:"guid";s:49:"tag:github.com,2008:Repository/12320050/1.4.0.RC3";s:11:"description";s:694:"<p>Last RC for 1.4.0 :)</p>
 <ul>
 <li>fix return null in function invokeEvent</li>
 <li>some manager style Fix<br>
@@ -190,7 +242,7 @@ O:9:"MagpieRSS":24:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:
 <li>Update PHPMailer 6.0.3</li>
 <li>clear <a href="https://github.com/tags" class="user-mention">@tags</a> from default template, turn off <a href="https://github.com/tags" class="user-mention">@tags</a> by Default</li>
 <li>update FormLister 1.7.12</li>
-</ul>";s:14:"date_timestamp";i:1515713778;}i:2;a:8:{s:5:"title";s:9:"1.4.0.RC2";s:4:"link";s:47:"/evolution-cms/evolution/releases/tag/1.4.0.RC2";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Fri, 17 Nov 2017 05:27:34 PST";s:4:"guid";s:49:"tag:github.com,2008:Repository/12320050/1.4.0.RC2";s:11:"description";s:40:"<p>Fixed lot bug founded on 1.4.0.RC</p>";s:7:"summary";s:40:"<p>Fixed lot bug founded on 1.4.0.RC</p>";s:14:"date_timestamp";i:1510925254;}i:3;a:8:{s:5:"title";s:8:"1.4.0.RC";s:4:"link";s:46:"/evolution-cms/evolution/releases/tag/1.4.0.RC";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Mon, 06 Nov 2017 06:04:30 PST";s:4:"guid";s:48:"tag:github.com,2008:Repository/12320050/1.4.0.RC";s:11:"description";s:606:"<ul>
+</ul>";s:14:"date_timestamp";i:1515713778;}i:3;a:8:{s:5:"title";s:9:"1.4.0.RC2";s:4:"link";s:47:"/evolution-cms/evolution/releases/tag/1.4.0.RC2";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Fri, 17 Nov 2017 05:27:34 PST";s:4:"guid";s:49:"tag:github.com,2008:Repository/12320050/1.4.0.RC2";s:11:"description";s:40:"<p>Fixed lot bug founded on 1.4.0.RC</p>";s:7:"summary";s:40:"<p>Fixed lot bug founded on 1.4.0.RC</p>";s:14:"date_timestamp";i:1510925254;}i:4;a:8:{s:5:"title";s:8:"1.4.0.RC";s:4:"link";s:46:"/evolution-cms/evolution/releases/tag/1.4.0.RC";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Mon, 06 Nov 2017 06:04:30 PST";s:4:"guid";s:48:"tag:github.com,2008:Repository/12320050/1.4.0.RC";s:11:"description";s:606:"<ul>
 <li>fixed many bugs from 1.3.* version</li>
 <li>add globalTabs in manager (need turnON in Settings)</li>
 <li>add Color Switcher for manager (need turnON in Settings)</li>
@@ -208,9 +260,9 @@ O:9:"MagpieRSS":24:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:
 <li>move to Extras (AjaxSearch, Breadcrumbs, Ditto, eForm, JotX, Membercheck, Personalize, Reflect, Wayfinder, WebLogin)</li>
 <li>Improved New Resource Menu in top menu</li>
 <li>Allow {{chunk?&amp;param=<code>xxx</code>}} with [<em>tv_name_[+param+]</em>] as content</li>
-</ul>";s:14:"date_timestamp";i:1509977070;}i:4;a:8:{s:5:"title";s:5:"1.3.6";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.6";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Mon, 04 Sep 2017 03:41:48 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.6";s:11:"description";s:124:"<p>-[S] refactor ajax.php, close SQL injection (64j)<br>
+</ul>";s:14:"date_timestamp";i:1509977070;}i:5;a:8:{s:5:"title";s:5:"1.3.6";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.6";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Mon, 04 Sep 2017 03:41:48 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.6";s:11:"description";s:124:"<p>-[S] refactor ajax.php, close SQL injection (64j)<br>
 -[F] fix ditto error on 61 str. in ditto.class.inc.php (Dmi3yy)</p>";s:7:"summary";s:124:"<p>-[S] refactor ajax.php, close SQL injection (64j)<br>
--[F] fix ditto error on 61 str. in ditto.class.inc.php (Dmi3yy)</p>";s:14:"date_timestamp";i:1504521708;}i:5;a:8:{s:5:"title";s:5:"1.3.5";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.5";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Fri, 01 Sep 2017 12:26:02 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.5";s:11:"description";s:2133:"<ul>
+-[F] fix ditto error on 61 str. in ditto.class.inc.php (Dmi3yy)</p>";s:14:"date_timestamp";i:1504521708;}i:6;a:8:{s:5:"title";s:5:"1.3.5";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.5";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Fri, 01 Sep 2017 12:26:02 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.5";s:11:"description";s:2133:"<ul>
 <li>[F] ElementsInTree restyled for new theme, version 1.5.8 (Piotr Matysiak)</li>
 <li>[F] Fix - &lt;<a href="https://github.com/if" class="user-mention">@if</a>&gt;&lt;<a href="https://github.com/elseif" class="user-mention">@elseif</a>&gt;&lt;<a href="https://github.com/else" class="user-mention">@else</a>&gt;&lt;<a href="https://github.com/endif" class="user-mention">@endif</a>&gt; (yamamoto)</li>
 <li>[F] Fix Bugs in Ditto with date and placeholders from version 1.3.4 (yamamoto, Dmi3yy)</li>
@@ -234,7 +286,7 @@ O:9:"MagpieRSS":24:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:
 <li>[F] <a href="https://github.com/evolution-cms/evolution/issues/187" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="252626751" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/187">#187</a> Ditto is missing placeholders when built-in filters are enabled (yamamoto)</li>
 <li>[F] saved roles users <a href="https://github.com/evolution-cms/evolution/issues/130" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="246521479" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/130">#130</a> (64j)</li>
 <li>[F] <a href="https://github.com/evolution-cms/evolution/issues/192" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="253143482" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/192">#192</a> evo.checkConnectionToServer function (64j)</li>
-</ul>";s:14:"date_timestamp";i:1504293962;}i:6;a:8:{s:5:"title";s:5:"1.3.4";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.4";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Tue, 29 Aug 2017 22:21:43 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.4";s:11:"description";s:1568:"<ul>
+</ul>";s:14:"date_timestamp";i:1504293962;}i:7;a:8:{s:5:"title";s:5:"1.3.4";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.4";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Tue, 29 Aug 2017 22:21:43 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.4";s:11:"description";s:1568:"<ul>
 <li>update FormLister to 1.7.8 (dmi3yy)</li>
 <li>update DocLister to 1.3.11 (dmi3yy)</li>
 <li><a href="https://github.com/file" class="user-mention">@file</a> for chunks - <code>{{@FILE:assets/chunks/header.html}}</code></li>
@@ -272,7 +324,7 @@ O:9:"MagpieRSS":24:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:
 <li>New - <code>&lt;@LITERAL&gt;[*any tags*] {{any chunk}} [[any call]]&lt;@ENDLITERAL&gt;</code> Display tags as it is (block)</li>
 <li>New - <code>\[\*any tags\*\] \{\{any chunk\}\} \[\[any call\]\]</code> Display tags as it is (inline)</li>
 <li>New - <code>{{ any chunk }}</code> Display chunk call as it is</li>
-</ul>";s:14:"date_timestamp";i:1504070503;}i:7;a:8:{s:5:"title";s:5:"1.3.3";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.3";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Thu, 20 Jul 2017 00:36:44 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.3";s:11:"description";s:1800:"<ul>
+</ul>";s:14:"date_timestamp";i:1504070503;}i:8;a:8:{s:5:"title";s:5:"1.3.3";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.3";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Thu, 20 Jul 2017 00:36:44 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.3";s:11:"description";s:1800:"<ul>
 <li>[GitHub:#f83719a0] - [F] fix for multiTV&lt;10.0.12 (need branch name Evolution) (dmi3yy)</li>
 <li>[GitHub:#3ac1ef3f] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/73" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244110381" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/73">#73</a> update login form (64j)</li>
 <li>[GitHub:#c469b0ed] - [I] Update README.md add version informer (Dmytro Lukianenko)</li>
@@ -292,7 +344,7 @@ O:9:"MagpieRSS":24:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:
 <li>[GitHub:#ee27d087] - [C] remove unused files DLUsers (dmi3yy)</li>
 <li>[GitHub:#d4c67e6a] - [I] FormLister need PHP &gt;= 5.6 (Anton Kolesnikov)</li>
 <li>[GitHub:#8e4594f8] - [F] fix issues <a href="https://github.com/evolution-cms/evolution/issues/72" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244108608" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/72">#72</a> forma code (64j)</li>
-</ul>";s:14:"date_timestamp";i:1500536204;}i:8;a:8:{s:5:"title";s:5:"1.3.2";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.2";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Wed, 19 Jul 2017 13:35:47 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.2";s:11:"description";s:850:"<ul>
+</ul>";s:14:"date_timestamp";i:1500536204;}i:9;a:8:{s:5:"title";s:5:"1.3.2";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.2";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Wed, 19 Jul 2017 13:35:47 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.2";s:11:"description";s:850:"<ul>
 <li>[GitHub:#a8fc2fdf] - [F] updater plugin (dmi3yy)</li>
 <li>[GitHub:#ad14254c] - [F] fix <a href="https://github.com/evolution-cms/evolution/issues/75" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244149753" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/75">#75</a> (Pathologic)</li>
 <li>[GitHub:#d29faf9a] - [R] refactor sortableList (64j)</li>
@@ -302,12 +354,6 @@ O:9:"MagpieRSS":24:{s:6:"parser";i:0;s:12:"current_item";a:0:{}s:5:"items";a:10:
 <li>[GitHub:#ad14254c] - [F] fix <a href="https://github.com/evolution-cms/evolution/issues/75" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244149753" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/75">#75</a> (Pathologic)</li>
 <li>[GitHub:#d29faf9a] - [R] refactor sortableList (64j)</li>
 <li>[GitHub:#ffa63034] - [F] fix <a href="https://github.com/evolution-cms/evolution/issues/68" class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="244005303" data-permission-text="Issue title is private" data-url="https://github.com/evolution-cms/evolution/issues/68">#68</a>  (for hide widget better use  $widgets['welcome']['hide'] = 1;) (dmi3yy)</li>
-</ul>";s:14:"date_timestamp";i:1500496547;}i:9;a:8:{s:5:"title";s:5:"1.3.1";s:4:"link";s:43:"/evolution-cms/evolution/releases/tag/1.3.1";s:2:"dc";a:1:{s:7:"creator";s:6:"dmi3yy";}s:7:"pubdate";s:29:"Wed, 19 Jul 2017 02:56:41 PDT";s:4:"guid";s:45:"tag:github.com,2008:Repository/12320050/1.3.1";s:11:"description";s:103:"<ul>
-<li>[F] DocLister 2.3.5 fix paginate (dmi3yy)</li>
-<li>[F] version in top menu (dmi3yy)</li>
-</ul>";s:7:"summary";s:103:"<ul>
-<li>[F] DocLister 2.3.5 fix paginate (dmi3yy)</li>
-<li>[F] version in top menu (dmi3yy)</li>
-</ul>";s:14:"date_timestamp";i:1500458201;}}s:7:"channel";a:6:{s:5:"title";s:28:"Release notes from evolution";s:4:"link";s:51:"https://github.com/evolution-cms/evolution/releases";s:8:"language";s:5:"en-US";s:13:"lastbuilddate";s:29:"Thu, 25 Jan 2018 11:48:19 PST";s:10:"feedburner";a:2:{s:14:"emailserviceid";s:19:"evocms-release-news";s:18:"feedburnerhostname";s:29:"https://feedburner.google.com";}s:7:"tagline";N;}s:9:"textinput";a:0:{}s:5:"image";a:0:{}s:9:"feed_type";s:3:"RSS";s:12:"feed_version";s:3:"2.0";s:8:"encoding";s:5:"UTF-8";s:16:"_source_encoding";s:0:"";s:5:"ERROR";s:0:"";s:7:"WARNING";s:0:"";s:19:"_CONTENT_CONSTRUCTS";a:6:{i:0;s:7:"content";i:1;s:7:"summary";i:2;s:4:"info";i:3;s:5:"title";i:4;s:7:"tagline";i:5;s:9:"copyright";}s:16:"_KNOWN_ENCODINGS";a:3:{i:0;s:5:"UTF-8";i:1;s:8:"US-ASCII";i:2;s:10:"ISO-8859-1";}s:5:"stack";a:0:{}s:9:"inchannel";b:0;s:6:"initem";b:0;s:9:"incontent";b:0;s:11:"intextinput";b:0;s:7:"inimage";b:0;s:17:"current_namespace";b:0;s:15:"source_encoding";s:5:"UTF-8";s:4:"etag";s:29:"eGvUUJZ+fHFu7mU/1VQoblMrss0
-";s:13:"last_modified";s:31:"Fri, 02 Feb 2018 15:00:01 GMT
+</ul>";s:14:"date_timestamp";i:1500496547;}}s:7:"channel";a:6:{s:5:"title";s:28:"Release notes from evolution";s:4:"link";s:51:"https://github.com/evolution-cms/evolution/releases";s:8:"language";s:5:"en-US";s:13:"lastbuilddate";s:29:"Fri, 02 Mar 2018 00:57:30 PST";s:10:"feedburner";a:2:{s:14:"emailserviceid";s:19:"evocms-release-news";s:18:"feedburnerhostname";s:29:"https://feedburner.google.com";}s:7:"tagline";N;}s:9:"textinput";a:0:{}s:5:"image";a:0:{}s:9:"feed_type";s:3:"RSS";s:12:"feed_version";s:3:"2.0";s:8:"encoding";s:5:"UTF-8";s:16:"_source_encoding";s:0:"";s:5:"ERROR";s:0:"";s:7:"WARNING";s:0:"";s:19:"_CONTENT_CONSTRUCTS";a:6:{i:0;s:7:"content";i:1;s:7:"summary";i:2;s:4:"info";i:3;s:5:"title";i:4;s:7:"tagline";i:5;s:9:"copyright";}s:16:"_KNOWN_ENCODINGS";a:3:{i:0;s:5:"UTF-8";i:1;s:8:"US-ASCII";i:2;s:10:"ISO-8859-1";}s:5:"stack";a:0:{}s:9:"inchannel";b:0;s:6:"initem";b:0;s:9:"incontent";b:0;s:11:"intextinput";b:0;s:7:"inimage";b:0;s:17:"current_namespace";b:0;s:13:"last_modified";s:31:"Fri, 02 Mar 2018 15:41:58 GMT
+";s:4:"etag";s:29:"Ytbww4MWLBm5xtiVEAZj7leo4xc
 ";}

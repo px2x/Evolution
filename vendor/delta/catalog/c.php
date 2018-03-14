@@ -27,6 +27,7 @@ class catalog_c {
 	protected static $_VIEW_P_ALL_FIELD;
 	protected static $_TABLE_P_IMAGES;
 	protected static $_TABLE_P;
+	protected static $_TABLE_DESCR;
 	protected  $catsIDS = array();
 	public  $goodsIDS = array();
 	protected $modx;
@@ -42,6 +43,7 @@ class catalog_c {
 		self::$_VIEW_P_ALL_FIELD = 'v_product_all_field' ;
 		self::$_TABLE_P_IMAGES =  $this->modx->getFullTableName( '_product_images' );
 		self::$_TABLE_P =  $this->modx->getFullTableName( '_product' );
+		self::$_TABLE_DESCR =  $this->modx->getFullTableName( '_product_description' );
 	}
 
 
@@ -398,6 +400,7 @@ class catalog_c {
 		if( $this->modx->db->getRecordCount( $result ) > 0 ) {
 			if( $row = $this->modx->db->getRow( $result ) ) { 
 				$ids[$id]['fields'] = $row;   
+				$this->toPlaceholderGood($row);
 				$ids[$id]['fields']['path'] = $this->modx->makeURL ( $row['parent']).$row['alias'].$this->modx->config['friendly_url_suffix'];
 	
 			}
@@ -406,6 +409,28 @@ class catalog_c {
 
 		return $ids;
 	}
+
+
+
+
+
+
+
+	/**
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
+	function toPlaceholderGood ($fields){
+		if (is_array($fields) && count($fields)){
+			foreach ($fields as $key => $value) {
+				$this->modx->toPlaceholder($key, $value , 'px.');
+			}
+		}
+	}
+
+
 
 
 

@@ -1,2 +1,2 @@
 <?php
-define('MODX_SITE_HOSTNAMES', '');
+define('MODX_SITE_HOSTNAMES', 'evolution');
