@@ -78,4 +78,46 @@ trait catalog_cRender {
 
 
 
+	/**
+	 * Верстка. Render list
+	 * 
+	 * @param string $chunkName - чанк категории
+	 * @param mixed $mode - false - вернуть верстку, 'print' - напечатать
+	 * @return string
+	 */
+	public function renderList ($chunkName , $data , $mode = false){
+		$this->bufer = '';
+		$list = new ArrayObject( $data );
+		$iterator = $list->getIterator();
+		$bodyChunk = $this->modx->getChunk($chunkName) ;
+	
+		while($iterator->valid()){
+			$tmp = $this->modx->parseText($bodyChunk , array(
+				'link' => $iterator->current()['link'],
+				'position' => $iterator->current()['position'],
+				'alt' => $iterator->current()['alt'] != '' ? $iterator->current()['alt'] : $this->modx->urlXParams['alias'],
+				'title' => $iterator->current()['title'] != '' ? $iterator->current()['title'] : $this->modx->urlXParams['alias'],
+			) , '[+px.');
+
+			$this->bufer .= $tmp;
+			$iterator->next();
+		}
+	
+		if ($mode == 'print') {
+			echo $this->bufer;
+			$this->bufer = '';
+		}
+		return $this->bufer;
+	}
+
+
+
+	
+
+
+
+
+
+
+
 }

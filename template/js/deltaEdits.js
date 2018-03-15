@@ -25,11 +25,26 @@ $(window).on('load', function () {
 
 $(document).ready(function () {
 
-            var list = document.getElementById("dloadImageList");
-        Sortable.create(list); // That's all.
+    Sortable.create(document.getElementById("dloadImageList"),{
+        animation: 300,
+        store: {
+            get: function (sortable) {
+              return  [];
+            },
+            set: function (sortable) {
+              remodePositions($('.imgprogress img'))
+            }
+        }
+    });
 
 
 
+    function remodePositions (ctrl) {
+        let i = 1;
+        ctrl.each(function(key , val){
+            $(val).data('position' , i).attr('data-position' , i++)
+        });
+    }
 
 
 
@@ -44,6 +59,8 @@ $(document).ready(function () {
         	$('.deltaEditProduct').addClass('active');
         }
     });
+
+
 
 
     $(document).on("click", ".tab", function (evt) {
@@ -63,8 +80,8 @@ $(document).ready(function () {
     });
 
 
-
     
+
 
     $(document).on("change", "#uploaded_file", function (evt) {
         var files = $(this).prop('files');
@@ -94,16 +111,19 @@ $(document).ready(function () {
                 };
             })(f);
             reader.readAsDataURL(f);
-
         }
         setTimeout(uploadImage, 100 , imageList , 0);
-       /// console.log(imageList);
     });
 
 
 
 
-  
+
+
+
+
+
+
 function uploadImage(data  , cnt) {
     var formData = new FormData();
     formData.append( 0 , data[cnt] );
@@ -122,9 +142,7 @@ function uploadImage(data  , cnt) {
         if (cnt+1 < data.length) {
             uploadImage(data  , cnt+1);
         }
-
     } else {
-
         $.ajax({
             url: 'ajax/adm/?event=uploadimages',
             type: 'POST',
@@ -146,13 +164,12 @@ function uploadImage(data  , cnt) {
                 }, true);
                 return xhr;
             },
-     
             success: function( respond ){
                 if (respond.result){
                     imageListState[cnt-1] = 'loaded';
                     var percentFullComplete = Math.ceil(cnt / data.length * 100);
                     progress.remove();
-                    $(".cont[data-tabid=2]").append('<input type="hidden" name="photo[]" value="'+respond.path+'">')
+                    $(".cont[data-tabid=2]").append('<input type="hidden" name="photo_'+cnt+'" value="'+respond.path+'">')
                     $("#progressFillImg").css({width: percentFullComplete + '%'});
                     if (percentFullComplete >= 100) {
                         $("#progressFillImg").css({width: '0%'});
@@ -167,7 +184,7 @@ function uploadImage(data  , cnt) {
                 if (cnt < data.length -1 ) uploadImage(data  , ++cnt);
             }
         });  
-  }   
+    }   
   cnt++;  
 }
 
@@ -175,9 +192,10 @@ function uploadImage(data  , cnt) {
 
 
 
+
     $(document).on("click", ".dControl.save", function (evt) {
         var form = new FormData();
-        var vals = $(".deltaEditProduct input , .deltaEditProduct textarea");
+        var vals = $(".deltaEditProduct input:not([type=file]) , .deltaEditProduct textarea");
 
         for (let i = 0; i < vals.length ; i++) {
         	form.append($(vals[i]).attr('name'), $(vals[i]).val());
@@ -191,7 +209,10 @@ function uploadImage(data  , cnt) {
         	method : "POST",
         	body : form,
         	headers : {
-        		xDltFetching : true
+                //"Accept"            :"application/json, text/javascript, */*; q=0.01",
+                //"Content-Type"      :"application/x-www-form-urlencoded; charset=UTF-8",
+                "X-Requested-With"  :"XMLHttpRequest",
+        		"xDltFetching"      : true
         	}
         }
 

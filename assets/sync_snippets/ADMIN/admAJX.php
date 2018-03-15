@@ -20,11 +20,12 @@ if ($headers['xDltFetching'] == 'true'){
 
 
 
-
-
 	if (RQ::G('event') == 'uploadimages') {
-		$response = $modx->c->uploadimages(); 
+		$response = $modx->c->uploadImages();
 	}
+
+
+
 	
 	
 }

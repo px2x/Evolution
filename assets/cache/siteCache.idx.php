@@ -44,6 +44,7 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 	<!-- <link rel="stylesheet" type="text/css" href="template/css/catalogfilter.css" /> -->
 	<!-- <link rel="stylesheet" type="text/css" href="template/css/jquery.fancybox.min.css" /> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
 </head>';$c['header']=' <header>
  	<div class="wrapper">
  		<img src="" alt="" class="logo" alt="LOGO" title="LOGO">
@@ -116,7 +117,7 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 </div>
 ';$c['ProductRedactor']='<link rel="stylesheet" type="text/css" href="template/css/deltaEdits.css" />
 <script src="template/js/deltaEdits.js"></script>
-<script src="template/js/Sortable.min.js"></script>
+
 
 <script type="text/javascript" src="assets/plugins/tinymce4/tinymce/jquery.tinymce.min.js"></script>
 <script type="text/javascript" src="assets/plugins/tinymce4/tinymce/tinymce.min.js"></script>
@@ -124,6 +125,7 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 <div class="deltaEPCont" id="viEditForm">Добавить</div>
 
 <div class="deltaEditProduct" id="deltaEditProduct" data-productid="[+px.idPage+]">
+	
 	<div class="tabs">
         <div class="tab active" data-tabid="1" data-hash="main">Основные</div>
 		<div class="tab" data-tabid="2" data-hash="photo">Фотографии</div>
@@ -132,8 +134,8 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 		<div class="tab" data-tabid="5" data-hash="seo">SEO</div>
     </div>
 	
-	
 	<div class="tabContent">
+		
 		
             <div class="cont active" data-tabid="1">
              
@@ -180,16 +182,16 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 			    </label>
 				
 				<div class="imagelist" id="dloadImageList">
-					
+					[!getImage? &type=`all` &tpl=`admImageList` &id=`[+px.idPage+]`!]
 				</div>
 				
 				
-				
-				
-				
-				
+	
+	
             </div>
 			
+		
+		
 			
             <div class="cont" data-tabid="3">
 				
@@ -218,7 +220,9 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 		
     </div>
 	
-</div>';$s=&$this->snippetCache;$s['DLCrumbs']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLCrumbs.php\';';$s['DLMenu']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLMenu.php\';';$s['DLSitemap']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLSitemap.php\';';$s['DocInfo']='return require MODX_BASE_PATH.\'assets/snippets/docinfo/snippet.docinfo.php\';';$s['DocLister']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DocLister.php\';';$s['FormLister']='return require MODX_BASE_PATH.\'assets/snippets/FormLister/snippet.FormLister.php\';';$s['if']='return require MODX_BASE_PATH.\'assets/snippets/if/snippet.if.php\';';$s['phpthumb']='return require MODX_BASE_PATH.\'assets/snippets/phpthumb/snippet.phpthumb.php\';';$s['summary']='return require MODX_BASE_PATH.\'assets/snippets/summary/snippet.summary.php\';';$s['DLT_CATALOG']='if (!is_numeric($root)){
+</div>';$c['admImageList']='<span class="imgprogress">
+	<img class="thumb" src="[+px.link+]" alt="[+px.alt+]" title="[+px.title+]" data-position="[+px.position+]">
+</span>';$s=&$this->snippetCache;$s['DLCrumbs']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLCrumbs.php\';';$s['DLMenu']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLMenu.php\';';$s['DLSitemap']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLSitemap.php\';';$s['DocInfo']='return require MODX_BASE_PATH.\'assets/snippets/docinfo/snippet.docinfo.php\';';$s['DocLister']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DocLister.php\';';$s['FormLister']='return require MODX_BASE_PATH.\'assets/snippets/FormLister/snippet.FormLister.php\';';$s['if']='return require MODX_BASE_PATH.\'assets/snippets/if/snippet.if.php\';';$s['phpthumb']='return require MODX_BASE_PATH.\'assets/snippets/phpthumb/snippet.phpthumb.php\';';$s['summary']='return require MODX_BASE_PATH.\'assets/snippets/summary/snippet.summary.php\';';$s['DLT_CATALOG']='if (!is_numeric($root)){
 	$root= $modx->documentIdentifier;
 }
 
@@ -306,16 +310,17 @@ if ($headers[\'xDltFetching\'] == \'true\'){
 
 
 
-
-
 	if (RQ::G(\'event\') == \'uploadimages\') {
-		$response = $modx->c->uploadimages(); 
+		$response = $modx->c->uploadImages();
 	}
+
+
+
 	
 	
 }
 	
-return json_encode($response);';$p=&$this->pluginCache;$p['CodeMirror']='/**
+return json_encode($response);';$s['getImage']='return $modx->c->renderList($tpl, $modx->c->getImages($id) , \'print\' );';$p=&$this->pluginCache;$p['CodeMirror']='/**
  * CodeMirror
  *
  * JavaScript library that can be used to create a relatively pleasant editor interface based on CodeMirror 5.12

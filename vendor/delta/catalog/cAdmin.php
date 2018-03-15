@@ -28,8 +28,10 @@ trait catalog_cAdmin {
 
 
 
+
+
 	public function updateGoods($id){
-		if (!is_numeric($id))  return false;
+		if (!is_numeric($id) || count(RQ::P()) < 1)  return false;
 
 		$sql = "UPDATE ".self::$_TABLE_DESCR."  SET 
 			name = '".RQ::P('name')."', 
@@ -38,9 +40,22 @@ trait catalog_cAdmin {
 		WHERE id_product = ".$id." AND id_language = ".DocumentParser::$_LANGUAGE_ID." LIMIT 1 ";
 
 		if ($result = $this->modx->db->query($sql)) {
-			$this->modx->clearCache();
-			return true;
+			$responsep['maininfo'] = true;
 		}
+
+
+		foreach (RQ::P() as $key => $value) {
+			if (preg_match("/(photo_)(\d)/ui", $key, $matches)) {
+				$sql = "INSERT INTO ".self::$_TABLE_P_IMAGES." (id_product , link , position) VALUES (".$id." , '".$value."' , ".$matches[2].") 
+					ON DUPLICATE KEY UPDATE position = ".$matches[2];
+				if ($result = $this->modx->db->query($sql)) {
+					$responsep['photo'][$matches[2]] = true;
+				}
+			}
+		}
+
+		$this->modx->clearCache();
+		return $responsep;
 	}
 
 
@@ -50,8 +65,7 @@ trait catalog_cAdmin {
 
 
 
-	public function uploadimages() {
-   
+	public function uploadImages() {
 	    if ($_FILES[0]) {
 	        $extArr =  explode('.', $_FILES[0]['name'] );
 	        $ext = end($extArr);     
@@ -59,7 +73,6 @@ trait catalog_cAdmin {
 	        $nameWithOutExt = $extArr;
 	        $nameWithOutExt = implode('.',$nameWithOutExt);
 	            
-	          
 	        if (!file_exists($_SERVER['DOCUMENT_ROOT'].'/assets/images/catDLT/upload/')) {
 	           	if (!mkdir($_SERVER['DOCUMENT_ROOT'].'/assets/images/catDLT/upload/' , 0777 , true)) {
 	           	}
@@ -84,6 +97,11 @@ trait catalog_cAdmin {
 	        return false;
 	     }
 	}
+
+
+
+
+	
 
 
 

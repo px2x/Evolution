@@ -44,6 +44,7 @@ class catalog_c {
 		self::$_TABLE_P_IMAGES =  $this->modx->getFullTableName( '_product_images' );
 		self::$_TABLE_P =  $this->modx->getFullTableName( '_product' );
 		self::$_TABLE_DESCR =  $this->modx->getFullTableName( '_product_description' );
+
 	}
 
 
@@ -159,6 +160,11 @@ class catalog_c {
 			return $this;
 		}	
 	}
+
+
+
+
+
 
 
 
@@ -401,6 +407,7 @@ class catalog_c {
 			if( $row = $this->modx->db->getRow( $result ) ) { 
 				$ids[$id]['fields'] = $row;   
 				$this->toPlaceholderGood($row);
+				$ids[$id]['images'] = $this->getImages($id);
 				$ids[$id]['fields']['path'] = $this->modx->makeURL ( $row['parent']).$row['alias'].$this->modx->config['friendly_url_suffix'];
 	
 			}
@@ -409,6 +416,33 @@ class catalog_c {
 
 		return $ids;
 	}
+
+
+
+
+
+
+
+	/**
+	 * Возвращает 
+	 * 
+	 * @return array
+	 */
+	public function getImages ($id){
+		if (!is_numeric($id)) return false;
+		$ids=false;
+		$result = $this->modx->db->query("SELECT link , alt, title, position FROM  ".self::$_TABLE_P_IMAGES." WHERE id_product =  ".$id); 
+
+		$i = 0;
+		if( $this->modx->db->getRecordCount( $result ) > 0 ) {
+			while( $row = $this->modx->db->getRow( $result ) ) { 
+				$ids[$i++] = $row;   
+			}
+		}
+
+		return $ids;
+	}
+
 
 
 
