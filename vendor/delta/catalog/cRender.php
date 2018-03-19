@@ -86,6 +86,7 @@ trait catalog_cRender {
 	 * @return string
 	 */
 	public function renderList ($chunkName , $data , $mode = false){
+		if (!is_array($data)) return false;
 		$this->bufer = '';
 		$list = new ArrayObject( $data );
 		$iterator = $list->getIterator();
