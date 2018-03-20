@@ -431,7 +431,7 @@ class catalog_c {
 	public function getImages ($id){
 		if (!is_numeric($id)) return false;
 		$ids=false;
-		$result = $this->modx->db->query("SELECT link , alt, title, position FROM  ".self::$_TABLE_P_IMAGES." WHERE id_product =  ".$id); 
+		$result = $this->modx->db->query("SELECT link , alt, title, position FROM  ".self::$_TABLE_P_IMAGES." WHERE id_product =  ".$id." ORDER BY position ASC LIMIT 30" ); 
 
 		$i = 0;
 		if( $this->modx->db->getRecordCount( $result ) > 0 ) {

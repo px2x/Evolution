@@ -222,6 +222,8 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 	
 </div>';$c['admImageList']='<span class="imgprogress">
 	<img class="thumb" src="[+px.link+]" alt="[+px.alt+]" title="[+px.title+]" data-position="[+px.position+]">
+	<input type="hidden" class="lnk" name="photo_[+px.position+]" value="[+px.link+]">
+	<input type="hidden" class="pos" name="photo_pos_[+px.position+]" value="[+px.position+]">
 </span>';$s=&$this->snippetCache;$s['DLCrumbs']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLCrumbs.php\';';$s['DLMenu']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLMenu.php\';';$s['DLSitemap']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLSitemap.php\';';$s['DocInfo']='return require MODX_BASE_PATH.\'assets/snippets/docinfo/snippet.docinfo.php\';';$s['DocLister']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DocLister.php\';';$s['FormLister']='return require MODX_BASE_PATH.\'assets/snippets/FormLister/snippet.FormLister.php\';';$s['if']='return require MODX_BASE_PATH.\'assets/snippets/if/snippet.if.php\';';$s['phpthumb']='return require MODX_BASE_PATH.\'assets/snippets/phpthumb/snippet.phpthumb.php\';';$s['summary']='return require MODX_BASE_PATH.\'assets/snippets/summary/snippet.summary.php\';';$s['DLT_CATALOG']='if (!is_numeric($root)){
 	$root= $modx->documentIdentifier;
 }

@@ -32,7 +32,7 @@ $(document).ready(function () {
               return  [];
             },
             set: function (sortable) {
-              remodePositions($('.imgprogress img'))
+              remodePositions($('.imgprogress') )
             }
         }
     });
@@ -41,8 +41,10 @@ $(document).ready(function () {
 
     function remodePositions (ctrl) {
         let i = 1;
-        ctrl.each(function(key , val){
-            $(val).data('position' , i).attr('data-position' , i++)
+        ctrl.find('img').each(function(key , val){
+            $(val).data('position' , i).attr('data-position' , i);
+            $(this).parent().find('.lnk').prop('name' , 'photo_'+i);
+            $(this).parent().find('.pos').prop('name' , 'photo_pos_'+i).val(i++);
         });
     }
 
@@ -169,7 +171,10 @@ function uploadImage(data  , cnt) {
                     imageListState[cnt-1] = 'loaded';
                     var percentFullComplete = Math.ceil(cnt / data.length * 100);
                     progress.remove();
-                    $(".cont[data-tabid=2]").append('<input type="hidden" name="photo_'+cnt+'" value="'+respond.path+'">')
+                   // $(".cont[data-tabid=2]").append('<input type="hidden" name="photo_'+cnt+'" value="'+respond.path+'">')
+                    let maxpos =  $('.imgprogress').length;
+                    $('.imgprogress img[title="'+filename+'"]').parent().append('<input type="hidden" class="lnk" name="photo_'+maxpos+'" value="'+respond.path+'">');
+                    $('.imgprogress img[title="'+filename+'"]').parent().append('<input type="hidden" class="pos" name="photo_pos_'+maxpos+'" value="'+maxpos+'">');
                     $("#progressFillImg").css({width: percentFullComplete + '%'});
                     if (percentFullComplete >= 100) {
                         $("#progressFillImg").css({width: '0%'});
