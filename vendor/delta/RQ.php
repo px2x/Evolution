@@ -58,16 +58,27 @@ class RQ
 
 
     public static function P($feild = false){
-        if ($feild && array_key_exists($feild, self::$P)) {
-            return self::$P[$feild];
+        if ($feild !== false) {
+             if (array_key_exists($feild, self::$P)) {
+                return self::$P[$feild];
+            }else{
+                return false;
+            }
         }
         return (self::$P);
+
+
+
     }
 
 
     public static function G($feild = false){
-        if ($feild && array_key_exists($feild, self::$G)) {
-            return self::$G[$feild];
+        if ($feild !== false) {
+             if (array_key_exists($feild, self::$G)) {
+                return self::$G[$feild];
+            }else{
+                return false;
+            }
         }
         return (self::$G);
     }

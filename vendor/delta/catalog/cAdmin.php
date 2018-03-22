@@ -32,7 +32,6 @@ trait catalog_cAdmin {
 
 	public function updateGoods($id){
 		if (!is_numeric($id) || count(RQ::P()) < 1)  return false;
-
 		$sql = "UPDATE ".self::$_TABLE_DESCR."  SET 
 			name = '".RQ::P('name')."', 
 			intro = '".RQ::P('intro')."', 
@@ -43,19 +42,43 @@ trait catalog_cAdmin {
 			$responsep['maininfo'] = true;
 		}
 
-
 		foreach (RQ::P() as $key => $value) {
-			if (preg_match("/(photo_)(\d)/ui", $key, $matches)) {
-				$sql = "INSERT INTO ".self::$_TABLE_P_IMAGES." (id_product , link , position) VALUES (".$id." , '".$value."' , ".$matches[2].") 
-					ON DUPLICATE KEY UPDATE position = ".$matches[2];
-				if ($result = $this->modx->db->query($sql)) {
-					$responsep['photo'][$matches[2]] = true;
+			$del = false;
+			if (preg_match("/(photo_del_)(\d)/ui", $key, $matches)) {
+				if ($value == 'true') {
+					$sql = "DELETE FROM ".self::$_TABLE_P_IMAGES." WHERE link = '".RQ::P('photo_'.$matches[2])."' LIMIT 1";
+					$this->modx->db->query($sql);
+					$del = true;
 				}
 			}
+
+
+			if (!$del){
+				if (preg_match("/(photo_)(\d)/ui", $key, $matchesI)) {
+					$sql = "INSERT INTO ".self::$_TABLE_P_IMAGES." (id_product , link , alt , title , position) VALUES (
+						".$id." ,
+					 	'".$value."' , 
+					 	'".RQ::P('photo_alt_'.$matchesI[2])."' , 
+					 	'".RQ::P('photo_tit_'.$matchesI[2])."' , 
+					 	".$matchesI[2]."
+					 ) ON DUPLICATE KEY UPDATE 
+					 	position = ".$matchesI[2].", 
+					 	alt = '".RQ::P('photo_alt_'.$matchesI[2])."', 
+					 	title = '".RQ::P('photo_tit_'.$matchesI[2])."'";
+
+					//echo $sql;
+
+					if ($result = $this->modx->db->query($sql)) {
+						$responsep['photo'][$matchesI[2]] = true;
+					}
+				}
+			}
+
 		}
 
 		$this->modx->clearCache();
 		return $responsep;
+
 	}
 
 
@@ -90,12 +113,14 @@ trait catalog_cAdmin {
 	                return  array(
 	                	'result' => false, 
 	                	'tx' => 'Неверно определен путь к файлу'
-
 	                );
-	           }
+	            }
 	        }
 	        return false;
-	     }
+	    }
+
+
+
 	}
 
 

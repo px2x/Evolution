@@ -8,6 +8,14 @@
 	height: 100vh
 
 
+@mixin fullSpaceB
+	position: absolute
+	left: 0
+	right: 0
+	top: 0
+	bottom: 0
+
+
 
 
 .deltaEPCont
@@ -34,7 +42,6 @@
 			border-top: 2px solid #eee
 			margin-right: 11px
 			cursor: pointer
-			
 			&.active
 				border-top: 2px solid #f00
 
@@ -55,7 +62,7 @@
 
 		.oneInut
 			position: relative
-			margin-bottom: 20px
+			margin-bottom: 35px
 
 			label
 				position: absolute
@@ -119,6 +126,28 @@
 		margin: 0 10px 10px 0
 		background: #eee
 		position: relative
+		cursor: move
+		&.deleted
+			display: none
+
+		&.editing
+			position: relative
+			&:after
+				content: ""
+				@include fullSpaceB
+				background: rgba(29, 51, 132, 0.50)
+
+
+	.deleteThis
+		position: absolute
+		top: 0
+		right: 0
+		width: 30px
+		height: 30px
+		text-align: center
+		line-height: 30px
+		background: rgba(255, 0, 12, 0.54)
+		cursor: pointer
 
 	img
 		max-width: 100%

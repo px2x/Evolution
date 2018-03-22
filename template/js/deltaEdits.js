@@ -32,7 +32,7 @@ $(document).ready(function () {
               return  [];
             },
             set: function (sortable) {
-              remodePositions($('.imgprogress') )
+              remodePositions($('.imgprogress'));
             }
         }
     });
@@ -41,12 +41,23 @@ $(document).ready(function () {
 
     function remodePositions (ctrl) {
         let i = 1;
+
+        ctrl.each(function(key , val){
+            if ($(this).hasClass('deleted')){
+                $(this).appendTo($('#dloadImageList'));
+            }
+        });
+
         ctrl.find('img').each(function(key , val){
             $(val).data('position' , i).attr('data-position' , i);
             $(this).parent().find('.lnk').prop('name' , 'photo_'+i);
+            $(this).parent().find('.del').prop('name' , 'photo_del_'+i);
+            $(this).parent().find('.alt').prop('name' , 'photo_alt_'+i);
+            $(this).parent().find('.tit').prop('name' , 'photo_tit_'+i);
             $(this).parent().find('.pos').prop('name' , 'photo_pos_'+i).val(i++);
         });
     }
+
 
 
 
@@ -65,6 +76,7 @@ $(document).ready(function () {
 
 
 
+
     $(document).on("click", ".tab", function (evt) {
         evt.stopPropagation();
         $('.cont').removeClass('active');
@@ -77,9 +89,53 @@ $(document).ready(function () {
 
 
 
-    $(document).on("keyup", "input", function (evt) {
+
+    $(document).on("keyup , change", "input:not(#uploaded_file)", function (evt) {
         $(this).attr("value" , $(this).val());
     });
+
+
+
+    $(document).on("click", ".deleteThis", function (evt) {
+        $(this).parent().addClass("deleted");
+        $(this).parent().find('.del').val('true');
+        $(this).parent().appendTo($('#dloadImageList'));
+        remodePositions($('.imgprogress'));
+    });
+
+
+
+    
+
+    $(document).on("keyup", "#imageAlt", function (evt) {
+        $(".imgprogress.editing img").prop("alt" , $(this).val());
+        $(".imgprogress.editing").find('.alt').val($(this).val());
+    });
+
+
+    $(document).on("keyup", "#imageTitle", function (evt) {
+        $(".imgprogress.editing img").prop("title", $(this).val())
+        $(".imgprogress.editing").find('.tit').val($(this).val());
+    });
+
+
+
+
+
+
+
+
+
+    $(document).on("click", ".imgprogress", function (evt) {
+        $('.imgprogress').removeClass("editing");
+        $(this).addClass("editing");
+        $('#imageAlt').val($(this).find('img').prop('alt'));
+        $('#imageTitle').val($(this).find('img').prop('title'));
+        $('#imageTitle , #imageAlt').data('link' , $(this).find('img').prop('src')  ).attr("data-link" , $(this).find('img').prop('src') );  
+        $('.tabContent input:not(#uploaded_file)').change();
+    });
+
+
 
 
     
@@ -109,7 +165,8 @@ $(document).ready(function () {
                     span.append( ['<img class="thumb" src="', e.target.result,
                                     '" title="', filename, '"/>'].join(''));
                     span.appendTo('.imagelist');  
-                    data.append( i , theFile );      
+                    data.append( i , theFile );   
+                    remodePositions($('.imgprogress'));   
                 };
             })(f);
             reader.readAsDataURL(f);
@@ -135,8 +192,7 @@ function uploadImage(data  , cnt) {
     var filename = arrnames.join('.'); 
     var filenameNotDot = arrnames.join(''); 
     var progress = $('.imgprogress img[title="'+filename+'"]').parent().find('.progress-bar-mini');
-    console.log(progress);
-
+ 
     let imageListState = [];
 
     if (imageListState[cnt] == 'loaded') {
@@ -173,17 +229,26 @@ function uploadImage(data  , cnt) {
                     progress.remove();
                    // $(".cont[data-tabid=2]").append('<input type="hidden" name="photo_'+cnt+'" value="'+respond.path+'">')
                     let maxpos =  $('.imgprogress').length;
+                    $('.imgprogress img[title="'+filename+'"]').parent().prepend('<span class="deleteThis">&times;</span>');
                     $('.imgprogress img[title="'+filename+'"]').parent().append('<input type="hidden" class="lnk" name="photo_'+maxpos+'" value="'+respond.path+'">');
                     $('.imgprogress img[title="'+filename+'"]').parent().append('<input type="hidden" class="pos" name="photo_pos_'+maxpos+'" value="'+maxpos+'">');
+                    $('.imgprogress img[title="'+filename+'"]').parent().append('<input type="hidden" class="pos" name="photo_alt_'+maxpos+'" value="">');
+                    $('.imgprogress img[title="'+filename+'"]').parent().append('<input type="hidden" class="pos" name="photo_tit_'+maxpos+'" value="">');
+                    $('.imgprogress img[title="'+filename+'"]').parent().append('<input type="hidden" class="del" name="photo_del_'+maxpos+'" value="false">');
                     $("#progressFillImg").css({width: percentFullComplete + '%'});
+                  
                     if (percentFullComplete >= 100) {
                         $("#progressFillImg").css({width: '0%'});
+                 
+                        
                     }
 
                     if (cnt < data.length) uploadImage(data  , cnt);
                 }else {
                     if (cnt < data.length -1) uploadImage(data  , ++cnt);
                 }
+                remodePositions($('.imgprogress'));
+
             },
             error: function(){
                 if (cnt < data.length -1 ) uploadImage(data  , ++cnt);
@@ -197,14 +262,14 @@ function uploadImage(data  , cnt) {
 
 
 
-
     $(document).on("click", ".dControl.save", function (evt) {
         var form = new FormData();
-        var vals = $(".deltaEditProduct input:not([type=file]) , .deltaEditProduct textarea");
+        var vals = $(".deltaEditProduct input:not([type=file]):not(.notSend) , .deltaEditProduct textarea");
 
         for (let i = 0; i < vals.length ; i++) {
         	form.append($(vals[i]).attr('name'), $(vals[i]).val());
         }
+
         form.append("id_product" , $(".deltaEditProduct").data("productid"));
         form.append("event" , "addOrUpdate");
         form.append("description" , tinyMCE.activeEditor.getContent());

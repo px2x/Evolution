@@ -448,8 +448,6 @@ class catalog_c {
 
 
 
-
-
 	/**
 	 * 
 	 * 
@@ -463,6 +461,7 @@ class catalog_c {
 			}
 		}
 	}
+
 
 
 

@@ -181,13 +181,25 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 				   <input type="file" name="xFile" id="uploaded_file" multiple="false" accept=".jpg,.png,.gif,.webp,.jpeg,.bmp,.wbmp">
 			    </label>
 				
+				
+				<div class="oneInut">
+					<input type="text" class="notSend" name="imageAlt" value="" id="imageAlt"/>
+					<label for="imageAlt">ALT</label>
+				</div>
+				
+				
+				<div class="oneInut">
+					<input type="text" class="notSend" name="imageTitle" value="" id="imageTitle"/>
+					<label for="imageTitle">TITLE</label>
+				</div>
+				
+				
 				<div class="imagelist" id="dloadImageList">
 					[!getImage? &type=`all` &tpl=`admImageList` &id=`[+px.idPage+]`!]
 				</div>
 				
 				
-	
-	
+
             </div>
 			
 		
@@ -205,7 +217,7 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
             </div>
 		
 				
-		    <div class="cont" data-tabid="4">
+		    <div class="cont" data-tabid="5">
 				
 			
             </div>
@@ -221,9 +233,13 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
     </div>
 	
 </div>';$c['admImageList']='<span class="imgprogress">
+	<span class="deleteThis">&times;</span>
 	<img class="thumb" src="[+px.link+]" alt="[+px.alt+]" title="[+px.title+]" data-position="[+px.position+]">
 	<input type="hidden" class="lnk" name="photo_[+px.position+]" value="[+px.link+]">
 	<input type="hidden" class="pos" name="photo_pos_[+px.position+]" value="[+px.position+]">
+	<input type="hidden" class="alt" name="photo_alt_[+px.position+]" value="[+px.alt+]">
+	<input type="hidden" class="tit" name="photo_tit_[+px.position+]" value="[+px.title+]">
+	<input type="hidden" class="del" name="photo_del_[+px.position+]" value="false">
 </span>';$s=&$this->snippetCache;$s['DLCrumbs']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLCrumbs.php\';';$s['DLMenu']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLMenu.php\';';$s['DLSitemap']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DLSitemap.php\';';$s['DocInfo']='return require MODX_BASE_PATH.\'assets/snippets/docinfo/snippet.docinfo.php\';';$s['DocLister']='return require MODX_BASE_PATH.\'assets/snippets/DocLister/snippet.DocLister.php\';';$s['FormLister']='return require MODX_BASE_PATH.\'assets/snippets/FormLister/snippet.FormLister.php\';';$s['if']='return require MODX_BASE_PATH.\'assets/snippets/if/snippet.if.php\';';$s['phpthumb']='return require MODX_BASE_PATH.\'assets/snippets/phpthumb/snippet.phpthumb.php\';';$s['summary']='return require MODX_BASE_PATH.\'assets/snippets/summary/snippet.summary.php\';';$s['DLT_CATALOG']='if (!is_numeric($root)){
 	$root= $modx->documentIdentifier;
 }
@@ -295,9 +311,9 @@ echo $modx->pre($idsF);
 */';$s['admAJX']='$headers = getallheaders();
 
 if ($headers[\'xDltFetching\'] == \'true\'){
-
 	
 	if (RQ::P(\'event\') == \'addOrUpdate\') {
+		
 		if ($response[\'che\'] = $modx->c->checkExists(RQ::P(\'id_product\'))){
 			$response[\'evt\'] =  \'update\';
 			$response[\'state\'] =  $modx->c->updateGoods(RQ::P(\'id_product\'));
@@ -310,16 +326,9 @@ if ($headers[\'xDltFetching\'] == \'true\'){
 
 
 
-
-
 	if (RQ::G(\'event\') == \'uploadimages\') {
 		$response = $modx->c->uploadImages();
 	}
-
-
-
-	
-	
 }
 	
 return json_encode($response);';$s['getImage']='return $modx->c->renderList($tpl, $modx->c->getImages($id) , \'print\' );';$p=&$this->pluginCache;$p['CodeMirror']='/**
