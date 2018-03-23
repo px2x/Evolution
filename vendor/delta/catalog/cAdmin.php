@@ -18,6 +18,8 @@ trait catalog_cAdmin {
 
 
 
+
+
 	public function checkExists($id){
 		$result = $this->modx->db->select("id_product", self::$_TABLE_P,  "id_product=" . $id ); 
 		if( $this->modx->db->getRecordCount( $result ) >= 1 ) {
@@ -25,6 +27,7 @@ trait catalog_cAdmin {
 		}
 		return false;
 	}
+
 
 
 
@@ -52,7 +55,6 @@ trait catalog_cAdmin {
 				}
 			}
 
-
 			if (!$del){
 				if (preg_match("/(photo_)(\d)/ui", $key, $matchesI)) {
 					$sql = "INSERT INTO ".self::$_TABLE_P_IMAGES." (id_product , link , alt , title , position) VALUES (
@@ -75,11 +77,10 @@ trait catalog_cAdmin {
 			}
 
 		}
-
 		$this->modx->clearCache();
 		return $responsep;
-
 	}
+
 
 
 
@@ -118,9 +119,6 @@ trait catalog_cAdmin {
 	        }
 	        return false;
 	    }
-
-
-
 	}
 
 

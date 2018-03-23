@@ -19,6 +19,7 @@ class DocumentParser extends DeltaDocumentParser {
 	public static $_TABLE_TVNAMES;
 
 	public $c;
+	public $p;
 
 	
 
@@ -30,6 +31,7 @@ class DocumentParser extends DeltaDocumentParser {
 		self::$_TABLE_TV = $this->getFullTableName('site_tmplvar_contentvalues');
 		self::$_TABLE_TVNAMES = $this->getFullTableName('site_tmplvars');
 		$this->c = new catalog_c($this);
+		$this->p = new props_p($this);
 	}
 
 

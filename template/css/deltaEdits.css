@@ -145,3 +145,45 @@
   width: 0;
   background: rgba(0, 67, 255, 0.38);
 }
+
+.PropsGroups {
+  width: 20%;
+}
+.PropsGroups .addGroup {
+  padding: 9px 0;
+  background: #1d3384;
+  margin-bottom: 22px;
+  text-align: center;
+  font-size: 21px;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+}
+.PropsGroups .accept {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #1d3384;
+  border: none;
+  right: 0;
+  width: 70;
+  outline: none;
+  border-radius: 0 2px 2px 0;
+  cursor: pointer;
+}
+.PropsGroups .accept img {
+  width: 50%;
+  height: 50%;
+}
+.PropsGroups .oneInut input {
+  min-width: 100% !important;
+  width: 100%;
+}
+.PropsGroups input.propsGroupList {
+  width: 100%;
+  cursor: pointer;
+  background: #f9f9f9;
+}
+.PropsGroups input[disabled=disabled] {
+  background: #efefef;
+}

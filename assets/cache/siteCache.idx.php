@@ -207,6 +207,14 @@ mm_widget_tags(\'keyw\',\',\'); // Give blog tag editing capabilities to the \'d
 			
             <div class="cont" data-tabid="3">
 				
+				<div class="PropsGroups">
+					<div class="addGroup">+</div>
+					<div class="oneInut">
+						<input type="text" class="notSend" name="PGroupName" value="" id="PGroupName"/>
+						<label for="PGroupName">Название группы</label>
+						<button class="accept"><img src="template/image/tick.svg" alt="tick"></button>
+					</div>
+				</div>
 			
             </div>
 		
@@ -309,11 +317,8 @@ echo $modx->pre($modx->getArrayData(\'goods\'));
 $idsF = $modx->getArrayData(\'cats\');
 echo $modx->pre($idsF);
 */';$s['admAJX']='$headers = getallheaders();
-
 if ($headers[\'xDltFetching\'] == \'true\'){
-	
 	if (RQ::P(\'event\') == \'addOrUpdate\') {
-		
 		if ($response[\'che\'] = $modx->c->checkExists(RQ::P(\'id_product\'))){
 			$response[\'evt\'] =  \'update\';
 			$response[\'state\'] =  $modx->c->updateGoods(RQ::P(\'id_product\'));
@@ -322,8 +327,10 @@ if ($headers[\'xDltFetching\'] == \'true\'){
 		}
 	}
 
-
-
+	
+	if (RQ::P(\'event\') == \'addPropsGroup\') {
+		$response = $modx->p->addPropsGroup(RQ::P(\'nameGroup\'));
+	}
 
 
 	if (RQ::G(\'event\') == \'uploadimages\') {

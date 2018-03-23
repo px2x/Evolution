@@ -138,6 +138,48 @@ $(document).ready(function () {
 
 
 
+
+
+
+    $(document).on("click", ".PropsGroups .accept" , function (evt) {
+        var form = new FormData();
+     
+        form.append("event" , "addPropsGroup");
+        form.append("nameGroup" , $("#PGroupName").val());
+
+        let fetchParams = {
+            method : "POST",
+            body : form,
+            headers : {
+                "X-Requested-With"  :"XMLHttpRequest",
+                "xDltFetching"      : true
+            }
+        }
+
+
+        let promise = fetch('ajax/adm/' , fetchParams)
+            .then(response => {
+                if (response.status != 200) throw new Error("o_O");
+                return response.json();
+            })
+            .then(data => {
+                if (data.state) {
+                    if (data.mode == 'create'){
+                        $(".PropsGroups").append('<input type="text" class="propsGroupList" name="propsGroup_'+data.id+'" disabled="disabled" value="'+data.name+'">');
+                    }
+                    console.log('yep');
+                }else {
+                    console.log('nope');
+                }
+            })
+            .catch(message=>{
+                console.log(message);
+            });
+    });
+
+
+
+
     
 
 
